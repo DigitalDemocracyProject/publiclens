@@ -1,0 +1,79 @@
+<div class="container">
+    <mat-card>
+      <mat-card-title>{{ formData?.title }}</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <div class="user-type-section">
+            <p class="question-text">Select User Type:</p>
+            <mat-radio-group
+              [formControlName]="'userType'"
+              class="vertical-radio-group">
+              <mat-radio-button value="ANONYMOUS">Anonymous</mat-radio-button>
+              <mat-radio-button value="Email">Email</mat-radio-button>
+            </mat-radio-group>
+          </div>
+  
+          <div *ngIf="form.get('userType')?.value === 'Email'">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Enter your email</mat-label>
+              <input matInput formControlName="userEmail" />
+            </mat-form-field>
+          </div>
+  
+          <div *ngFor="let question of formData?.questions" class="question">
+            <div *ngIf="question.type === 'text'">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>{{ question.text }}</mat-label>
+                <input matInput [formControlName]="question.id" />
+              </mat-form-field>
+            </div>
+  
+            <div *ngIf="question.type === 'radio'" class="radio-group">
+              <p class="question-text">{{ question.text }}</p>
+              <mat-radio-group
+                [formControlName]="question.id"
+                class="vertical-radio-group">
+                <mat-radio-button
+                  *ngFor="let option of question.options"
+                  [value]="option">
+                  {{ option }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+  
+            <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
+              <p class="question-text">{{ question.text }}</p>
+              <div *ngFor="let option of question.options; let i = index">
+                <mat-checkbox [formControl]="getCheckboxControl(question.id, i)">
+                  {{ option }}
+                </mat-checkbox>                
+              </div>
+            </div>
+  
+            <div *ngIf="question.type === 'dropdown'">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>{{ question.text }}</mat-label>
+                <mat-select [formControlName]="question.id">
+                  <mat-option
+                    *ngFor="let option of question.options"
+                    [value]="option">
+                    {{ option }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        
+          <div class="form-actions">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="form.invalid">
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+</div>
