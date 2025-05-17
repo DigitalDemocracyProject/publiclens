@@ -1,0 +1,25 @@
+[
+    {
+      "id": "q1",
+      "text": "What is your favorite color?",
+      "type": "radio",
+      "options": ["Red", "Blue", "Green"]
+    },
+    {
+      "id": "q2",
+      "text": "Select your hobbies",
+      "type": "checkbox",
+      "options": ["Reading", "Traveling", "Gaming"]
+    },
+    {
+      "id": "q3",
+      "text": "Where are you from?",
+      "type": "dropdown",
+      "options": ["USA", "UK", "India"]
+    },
+    {
+      "id": "q4",
+      "text": "Any additional comments?",
+      "type": "text"
+    }
+]

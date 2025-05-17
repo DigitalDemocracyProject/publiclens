@@ -33,12 +33,11 @@ export class SurveyFormComponent {
   }
 
   buildForm(data: any): void {
+    // Add user type controls outside the loop
+    this.form.addControl('userType', new FormControl(''));
+    this.form.addControl('userEmail', new FormControl(''));
+
     data.questions.forEach((question: any) => {
-
-      // User type controllers
-      this.form.addControl('userType', new FormControl(''));
-      this.form.addControl('userEmail', new FormControl(''));
-
       // Dynamic form controls
       if (question.type === 'checkbox') {
         this.form.addControl(

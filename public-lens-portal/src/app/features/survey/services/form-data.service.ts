@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,34 +16,11 @@ export class FormDataService {
   }
 
   getFormData(): Observable<any> {
-    // Existing mock form data
-    const formJson = {
-      title: 'Survey Form',
-      questions: [
-        {
-          id: 'q1',
-          text: 'What is your favorite color?',
-          type: 'radio',
-          options: ['Red', 'Blue', 'Green']
-        },
-        {
-          id: 'q2',
-          text: 'Select your hobbies',
-          type: 'checkbox',
-          options: ['Reading', 'Traveling', 'Gaming']
-        },
-        {
-          id: 'q3',
-          text: 'Where are you from?',
-          type: 'dropdown',
-          options: ['USA', 'UK', 'India']
-        },
-        { id: 'q4', text: 'Any additional comments?', type: 'text' }
-      ]
-    };
-    return new Observable((observer) => {
-      observer.next(formJson);
-      observer.complete();
-    });
+    return this.http.get<any[]>('assets/questions.json').pipe(
+      map((questions: any) => ({
+        title: 'Survey Form',
+        questions: questions
+      }))
+    );
   }
 }
