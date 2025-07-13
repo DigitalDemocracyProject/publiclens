@@ -1,0 +1,77 @@
+<div class="container" style="margin-left: 40px; margin-right: 40px;">
+    <h3>What is your opinion on the increased state sector salaries?</h3>
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="voting-behaviour">
+        <th mat-header-cell *matHeaderCellDef>Voting Behaviour</th>
+        <td mat-cell *matCellDef="let user">{{ user.voting_behaviour }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="strongly-agree">
+        <th mat-header-cell *matHeaderCellDef>Strongly Agree</th>
+        <td mat-cell *matCellDef="let user">{{ user.strongly_agree }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="agree">
+        <th mat-header-cell *matHeaderCellDef>Agree</th>
+        <td mat-cell *matCellDef="let user">{{ user.agree }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="neutral">
+            <th mat-header-cell *matHeaderCellDef>Neutral</th>
+            <td mat-cell *matCellDef="let user">{{ user.neutral }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="oppose">
+            <th mat-header-cell *matHeaderCellDef>Oppose</th>
+            <td mat-cell *matCellDef="let user">{{ user.oppose }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="strongly-oppose">
+            <th mat-header-cell *matHeaderCellDef>Strongly Oppose</th>
+            <td mat-cell *matCellDef="let user">{{ user.strongly_oppose }}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    
+    </table>
+
+    <h3>How effective do you think the government has been in maintaining law and order, particularly in addressing underworld and drug-related activities?</h3>
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="voting-behaviour">
+        <th mat-header-cell *matHeaderCellDef>Voting Behaviour</th>
+        <td mat-cell *matCellDef="let user">{{ user.voting_behaviour }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="strongly-agree">
+        <th mat-header-cell *matHeaderCellDef>Strongly Agree</th>
+        <td mat-cell *matCellDef="let user">{{ user.strongly_agree }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="agree">
+        <th mat-header-cell *matHeaderCellDef>Agree</th>
+        <td mat-cell *matCellDef="let user">{{ user.agree }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="neutral">
+            <th mat-header-cell *matHeaderCellDef>Neutral</th>
+            <td mat-cell *matCellDef="let user">{{ user.neutral }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="oppose">
+            <th mat-header-cell *matHeaderCellDef>Oppose</th>
+            <td mat-cell *matCellDef="let user">{{ user.oppose }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="strongly-oppose">
+            <th mat-header-cell *matHeaderCellDef>Strongly Oppose</th>
+            <td mat-cell *matCellDef="let user">{{ user.strongly_oppose }}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    
+    </table>
+  </div>
