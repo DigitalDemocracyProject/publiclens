@@ -1,0 +1,27 @@
+package org.alignwithme.survey_service._entity;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public class Question {
+
+    @Field(name = "questionId")
+    private String questionId;
+
+    @Field(name = "text")
+    private String text;
+
+    @Field(name = "type")
+    private String type;
+
+    @Field(name = "answers")
+    private List<Answer> answers;
+}
