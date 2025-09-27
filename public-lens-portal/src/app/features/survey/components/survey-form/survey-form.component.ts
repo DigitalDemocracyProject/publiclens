@@ -37,15 +37,15 @@ export class SurveyFormComponent {
     this.form.addControl('userType', new FormControl(''));
     this.form.addControl('userEmail', new FormControl(''));
 
-    data.questions.forEach((question: any) => {
+    data.questionInfos.forEach((question: any) => {
       // Dynamic form controls
       if (question.type === 'checkbox') {
         this.form.addControl(
-          question.id,
-          this.fb.array(question.options.map(() => false))
+          question.questionId,
+          this.fb.array(question.answerInfos.map(() => false))
         );
       } else {
-        this.form.addControl(question.id, new FormControl(''));
+        this.form.addControl(question.questionId, new FormControl(''));
       }
     });
   }
@@ -88,7 +88,7 @@ export class SurveyFormComponent {
               answerId: value
                 .map((selected, index) =>
                   selected
-                    ? this.formData.questions.find((q: any) => q.id === key).options[index]
+                    ? this.formData.questionInfos.find((q: any) => q.questionId === key).answerInfos[index].answerId
                     : null
                 )
                 .filter((option) => option !== null)

@@ -1,90 +1,108 @@
 [
   {
-    "id": "q1",
+    "questionId": "q1",
     "text": "Age group?",
     "type": "radio",
-    "options": ["18 – 24 years", 
-                "25 – 34 years", 
-                "35 – 44 years", 
-                "45 – 54 years", 
-                "55 – 64 years", 
-                "65 years and older"]
+    "answers": [
+      { "answerId": "q1_a1", "text": "18 – 24 years" },
+      { "answerId": "q1_a2", "text": "25 – 34 years" },
+      { "answerId": "q1_a3", "text": "35 – 44 years" },
+      { "answerId": "q1_a4", "text": "45 – 54 years" },
+      { "answerId": "q1_a5", "text": "55 – 64 years" },
+      { "answerId": "q1_a6", "text": "65 years and older" }
+    ]
   },
   {
-    "id": "q2",
+    "questionId": "q2",
     "text": "Gender?",
     "type": "radio",
-    "options": ["Male", 
-                "Female", 
-                "Other"]
+    "answers": [
+      { "answerId": "q2_a1", "text": "Male" },
+      { "answerId": "q2_a2", "text": "Female" },
+      { "answerId": "q2_a3", "text": "Other" }
+    ]
   },
   {
-    "id": "q3",
+    "questionId": "q3",
     "text": "District?",
     "type": "radio",
-    "options": ["Colombo", 
-                "Kalutara", 
-                "Gampaha"]
+    "answers": [
+      { "answerId": "q3_a1", "text": "Colombo" },
+      { "answerId": "q3_a2", "text": "Kalutara" },
+      { "answerId": "q3_a3", "text": "Gampaha" }
+    ]
   },
   {
-    "id": "q4",
+    "questionId": "q4",
     "text": "Voting behavior in previous election?",
     "type": "radio",
-    "options": ["Voted for the ruling party", 
-                "Voted for another party", 
-                "Did not vote",
-                "Do not wish to disclose"]
+    "answers": [
+      { "answerId": "q4_a1", "text": "Voted for the ruling party" },
+      { "answerId": "q4_a2", "text": "Voted for another party" },
+      { "answerId": "q4_a3", "text": "Did not vote" },
+      { "answerId": "q4_a4", "text": "Do not wish to disclose" }
+    ]
   },
   {
-    "id": "q5",
+    "questionId": "q5",
     "text": "What is your opinion on the increased state sector salaries?",
     "type": "radio",
-    "options": ["Strongly agree", 
-                "Agree", 
-                "Neutral", 
-                "Oppose", 
-                "Strongly oppese"]
+    "answers": [
+      { "answerId": "q5_a1", "text": "Strongly agree" },
+      { "answerId": "q5_a2", "text": "Agree" },
+      { "answerId": "q5_a3", "text": "Neutral" },
+      { "answerId": "q5_a4", "text": "Oppose" },
+      { "answerId": "q5_a5", "text": "Strongly oppese" }
+    ]
   },
   {
-    "id": "q6",
+    "questionId": "q6",
     "text": "How effective do you think the government has been in maintaining law and order, particularly in addressing underworld and drug-related activities?",
     "type": "radio",
-    "options": ["Very Effective", 
-                "Somewhat Effective", 
-                "Neutral", 
-                "Ineffective", 
-                "Very Ineffective"]
+    "answers": [
+      { "answerId": "q6_a1", "text": "Very Effective" },
+      { "answerId": "q6_a2", "text": "Somewhat Effective" },
+      { "answerId": "q6_a3", "text": "Neutral" },
+      { "answerId": "q6_a4", "text": "Ineffective" },
+      { "answerId": "q6_a5", "text": "Very Ineffective" }
+    ]
   },
   {
-    "id": "q7",
+    "questionId": "q7",
     "text": "Do you believe the government is delivering on its promises regarding education reforms?",
     "type": "radio",
-    "options": ["Yes, completely", 
-                "Somewhat", 
-                "Neutral", 
-                "Not really", 
-                "Not at all"]
+    "answers": [
+      { "answerId": "q7_a1", "text": "Yes, completely" },
+      { "answerId": "q7_a2", "text": "Somewhat" },
+      { "answerId": "q7_a3", "text": "Neutral" },
+      { "answerId": "q7_a4", "text": "Not really" },
+      { "answerId": "q7_a5", "text": "Not at all" }
+    ]
   },
   {
-    "id": "q8",
+    "questionId": "q8",
     "text": "In your opinion, has the quality of the state health sector improved compared to the year before(availability of medicines, queues, bed availability, doctor availability, etc)?",
     "type": "radio",
-    "options": ["Significantly Improved", 
-                "Slightly Improved", 
-                "Same as before", 
-                "Slightly Degraded", 
-                "Significantly Degraded"]
+    "answers": [
+      { "answerId": "q8_a1", "text": "Significantly Improved" },
+      { "answerId": "q8_a2", "text": "Slightly Improved" },
+      { "answerId": "q8_a3", "text": "Same as before" },
+      { "answerId": "q8_a4", "text": "Slightly Degraded" },
+      { "answerId": "q8_a5", "text": "Significantly Degraded" }
+    ]
   },
   {
-    "id": "q9",
+    "questionId": "q9",
     "text": "Which political party do you believe should win the upcoming election?",
     "type": "radio",
-    "options": ["NPP", 
-                "SJB", 
-                "SLPP", 
-                "UNP",
-                "Other", 
-                "Undecided", 
-                "Prefer not to say"]
+    "answers": [
+      { "answerId": "q9_a1", "text": "NPP" },
+      { "answerId": "q9_a2", "text": "SJB" },
+      { "answerId": "q9_a3", "text": "SLPP" },
+      { "answerId": "q9_a4", "text": "UNP" },
+      { "answerId": "q9_a5", "text": "Other" },
+      { "answerId": "q9_a6", "text": "Undecided" },
+      { "answerId": "q9_a7", "text": "Prefer not to say" }
+    ]
   }
 ]

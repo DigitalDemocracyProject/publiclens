@@ -20,32 +20,32 @@
             </mat-form-field>
           </div>
   
-          <div *ngFor="let question of formData?.questions" class="question">
+          <div *ngFor="let question of formData?.questionInfos" class="question">
             <div *ngIf="question.type === 'text'">
               <mat-form-field appearance="fill" class="full-width">
                 <mat-label>{{ question.text }}</mat-label>
-                <input matInput [formControlName]="question.id" />
+                <input matInput [formControlName]="question.questionId" />
               </mat-form-field>
             </div>
   
             <div *ngIf="question.type === 'radio'" class="radio-group">
               <p class="question-text">{{ question.text }}</p>
               <mat-radio-group
-                [formControlName]="question.id"
+                [formControlName]="question.questionId"
                 class="vertical-radio-group">
                 <mat-radio-button
-                  *ngFor="let option of question.options"
-                  [value]="option">
-                  {{ option }}
+                  *ngFor="let answer of question.answerInfos"
+                  [value]="answer.answerId">
+                  {{ answer.text }}
                 </mat-radio-button>
               </mat-radio-group>
             </div>
   
             <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
               <p class="question-text">{{ question.text }}</p>
-              <div *ngFor="let option of question.options; let i = index">
-                <mat-checkbox [formControl]="getCheckboxControl(question.id, i)">
-                  {{ option }}
+              <div *ngFor="let answer of question.answers; let i = index">
+                <mat-checkbox [formControl]="getCheckboxControl(question.questionId, i)">
+                  {{ answer.text }}
                 </mat-checkbox>                
               </div>
             </div>
@@ -53,11 +53,11 @@
             <div *ngIf="question.type === 'dropdown'">
               <mat-form-field appearance="fill" class="full-width">
                 <mat-label>{{ question.text }}</mat-label>
-                <mat-select [formControlName]="question.id">
+                <mat-select [formControlName]="question.questionId">
                   <mat-option
-                    *ngFor="let option of question.options"
-                    [value]="option">
-                    {{ option }}
+                    *ngFor="let answer of question.answers"
+                    [value]="answer.answerId">
+                    {{ answer.text }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
