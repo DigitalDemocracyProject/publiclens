@@ -1,6 +1,6 @@
-package org.alignwithme.survey_service._controller;
+package org.alignwithme.survey_service.controller;
 
-import org.alignwithme.survey_service._service.UserResponseService;
+import org.alignwithme.survey_service.service.UserResponseService;
 import org.alignwithme.survey_service.model.UserResponseInfo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

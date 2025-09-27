@@ -1,6 +1,6 @@
 package org.alignwithme.survey_service.util;
 
-import org.alignwithme.survey_service._entity.Answer;
+import org.alignwithme.survey_service.entity.Answer;
 import org.alignwithme.survey_service.model.AnswerInfo;
 import org.springframework.stereotype.Component;
 

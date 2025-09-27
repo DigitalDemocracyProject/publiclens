@@ -1,7 +1,7 @@
-package org.alignwithme.survey_service._service;
+package org.alignwithme.survey_service.service;
 
-import org.alignwithme.survey_service._entity.Survey;
-import org.alignwithme.survey_service._repository.SurveyRepository;
+import org.alignwithme.survey_service.entity.Survey;
+import org.alignwithme.survey_service.repository.SurveyRepository;
 import org.alignwithme.survey_service.exception.ErrorMessage;
 import org.alignwithme.survey_service.exception.ResourceNotFoundException;
 import org.alignwithme.survey_service.model.SurveyInfo;

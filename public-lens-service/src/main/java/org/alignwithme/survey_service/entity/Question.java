@@ -1,4 +1,6 @@
-package org.alignwithme.survey_service._entity;
+package org.alignwithme.survey_service.entity;
+
+import java.util.List;
 
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -11,11 +13,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Answer {
+public class Question {
 
-    @Field(name = "answerId")
-    private String answerId;
+    @Field(name = "questionId")
+    private String questionId;
 
     @Field(name = "text")
     private String text;
+
+    @Field(name = "type")
+    private String type;
+
+    @Field(name = "answers")
+    private List<Answer> answers;
 }

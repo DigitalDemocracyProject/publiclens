@@ -1,7 +1,7 @@
-package org.alignwithme.survey_service._service;
+package org.alignwithme.survey_service.service;
 
-import org.alignwithme.survey_service._entity.UserResponse;
-import org.alignwithme.survey_service._repository.UserResponseRepository;
+import org.alignwithme.survey_service.entity.UserResponse;
+import org.alignwithme.survey_service.repository.UserResponseRepository;
 import org.alignwithme.survey_service.model.UserResponseInfo;
 import org.alignwithme.survey_service.util.UserResponseUtil;
 import org.springframework.stereotype.Service;

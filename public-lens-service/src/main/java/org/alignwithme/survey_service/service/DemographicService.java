@@ -1,7 +1,7 @@
-package org.alignwithme.survey_service._service;
+package org.alignwithme.survey_service.service;
 
-import org.alignwithme.survey_service._entity.Demographic;
-import org.alignwithme.survey_service._repository.DemographicRepository;
+import org.alignwithme.survey_service.entity.Demographic;
+import org.alignwithme.survey_service.repository.DemographicRepository;
 import org.alignwithme.survey_service.model.DemographicInfo;
 import org.alignwithme.survey_service.util.DemographicUtil;
 import org.springframework.stereotype.Service;

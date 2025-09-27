@@ -1,7 +1,7 @@
 package org.alignwithme.survey_service.util;
 
 import lombok.AllArgsConstructor;
-import org.alignwithme.survey_service._entity.Survey;
+import org.alignwithme.survey_service.entity.Survey;
 import org.alignwithme.survey_service.model.SurveyInfo;
 import org.springframework.stereotype.Component;
 

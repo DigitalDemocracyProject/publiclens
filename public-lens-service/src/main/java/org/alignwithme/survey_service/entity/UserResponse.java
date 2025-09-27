@@ -1,4 +1,4 @@
-package org.alignwithme.survey_service._entity;
+package org.alignwithme.survey_service.entity;
 
 import java.util.List;
 
