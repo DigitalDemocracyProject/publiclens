@@ -27,8 +27,8 @@ public class UserResponse {
     @Field(name = "userId")
     private String userId;
 
-    @Field(name = "userDetails")
-    private List<Question> userDetails;
+    @Field(name = "demographics")
+    private List<Question> demographics;
 
     @Field(name = "userAnswers")
     private List<Question> userAnswers;
