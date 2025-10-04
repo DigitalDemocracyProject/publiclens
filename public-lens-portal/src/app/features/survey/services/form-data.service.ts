@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
@@ -12,7 +12,15 @@ export class FormDataService {
   constructor(private http: HttpClient) {}
 
   submitResponses(responsePayload: any): Observable<any> {
-    return this.http.post<any>(this.API_URL, responsePayload);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.post<any>(
+      `${this.API_URL}/user-response`, 
+      responsePayload,
+      { headers }
+    );
   }
 
   getFormData(): Observable<any> {

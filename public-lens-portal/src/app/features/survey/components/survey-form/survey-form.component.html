@@ -20,7 +20,7 @@
             </mat-form-field>
           </div>
   
-          <div *ngFor="let question of formData?.questionInfos" class="question">
+          <div *ngFor="let question of formData?.questions" class="question">
             <div *ngIf="question.type === 'text'">
               <mat-form-field appearance="fill" class="full-width">
                 <mat-label>{{ question.text }}</mat-label>
@@ -34,8 +34,8 @@
                 [formControlName]="question.questionId"
                 class="vertical-radio-group">
                 <mat-radio-button
-                  *ngFor="let answer of question.answerInfos"
-                  [value]="answer.answerId">
+                  *ngFor="let answer of question.answers"
+                  [value]="answer">
                   {{ answer.text }}
                 </mat-radio-button>
               </mat-radio-group>

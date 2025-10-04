@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { FormDataService } from '../../services/form-data.service';
 import { CookieService } from '../../services/cookie.service';
+import { AnswerInfo, QuestionInfo, UserResponseInfo } from '../../../../shared/shared.module';
 
 @Component({
   selector: 'app-survey-form',
@@ -37,12 +38,12 @@ export class SurveyFormComponent {
     this.form.addControl('userType', new FormControl(''));
     this.form.addControl('userEmail', new FormControl(''));
 
-    data.questionInfos.forEach((question: any) => {
+    data.questions.forEach((question: any) => {
       // Dynamic form controls
       if (question.type === 'checkbox') {
         this.form.addControl(
           question.questionId,
-          this.fb.array(question.answerInfos.map(() => false))
+          this.fb.array(question.answers.map(() => false))
         );
       } else {
         this.form.addControl(question.questionId, new FormControl(''));
@@ -72,58 +73,62 @@ export class SurveyFormComponent {
   }
 
   private doSubmision(userId: string) {
+
     if (this.form.valid) {
       const formValues = this.form.value;
-      const surveyId = 'S001'; // Hardcoded Survey Id
-      const submittedDate = new Date(); // Current submission date
 
-      // Build the user answers list
-      const userAnswers = Object.keys(formValues)
-        .filter((key) => key !== 'userEmail') // Exclude the email field from user answers
-        .map((key) => {
+      // Exclude non-survey controls
+      const excludedKeys = ['userType', 'userEmail'];
+
+      // Build the user answers
+      const userAnswers: QuestionInfo[] = [];
+      Object.keys(formValues).forEach(key => {
+        if (!excludedKeys.includes(key)) {
+
+          // Build the selected answer(s)
+          const answers: AnswerInfo[] = [];
+
           const value = formValues[key];
-          if (Array.isArray(value)) {
-            return {
-              questionId: key,
-              answerId: value
-                .map((selected, index) =>
-                  selected
-                    ? this.formData.questionInfos.find((q: any) => q.questionId === key).answerInfos[index].answerId
-                    : null
-                )
-                .filter((option) => option !== null)
-                .join(",")
+          if (value !== null && typeof value === 'object') { // Single answer
+            const answer: AnswerInfo = {
+              answerId: value.answerId,
+              text: value.text
             };
-          } else {
-            return {
-              questionId: key,
-              answerId: value
-            };
+            answers.push(answer);
           }
-        });
-
-      // Build the final response payload
-      const responsePayload = [
-        {
-          responseId: null, // Can be null or omitted for new submissions
-          surveyId: surveyId,
-          userId: userId, // Include the email address (even if empty)
-          submittedDate: submittedDate,
-          userAnswers: userAnswers
-        },
-      ];
-
-      // Submit the response payload to the API
-      this.formDataService.submitResponses(responsePayload).subscribe(
-        (response: any) => {
-          console.log('Responses submitted successfully: ', response);
-          this.router.navigate(['/success']); // Navigate to the success page
-        },
-        (error: any) => {
-          console.error('Error submitting responses: ', error);
-          alert('There was an error submitting the survey.');
+          
+          const question = this.formData.questions.find((question: any) => question.questionId === key);
+          if (question) {
+            const userAnswer: QuestionInfo = {
+              questionId: question.questionId,
+              text: question.text,
+              type: question.type,
+              answers: answers
+            };
+            userAnswers.push(userAnswer);
+          }
         }
-      );
+      });
+
+      // Build the user response payload
+      const surveyId = this.formData.id;
+      const userResponsePayload: UserResponseInfo = {
+          surveyId: surveyId,
+          userId: userId,
+          demographics: [],
+          userAnswers: userAnswers
+      };
+
+      // Submit the response to the service
+      this.formDataService.submitResponses(userResponsePayload).subscribe({
+        next: () => {
+          this.router.navigate(['/success']);
+        },
+        error: (error: any) => {
+          console.error('Error submitting responses: ', error);
+          alert('There was an error submitting the survey!');
+        }
+      });
     }
   }
 
