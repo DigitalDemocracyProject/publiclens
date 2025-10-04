@@ -9,5 +9,5 @@ import java.util.List;
 public class DemographicInfo {
 
     private String id;
-    private List<QuestionInfo> questionInfos;
+    private List<QuestionInfo> questions;
 }

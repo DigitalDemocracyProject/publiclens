@@ -18,10 +18,9 @@ public class UserResponseService {
         this.userResponseUtil = userResponseUtil;
     }
 
-    public String submitUserResponse(UserResponseInfo userResponseInfo) {
+    public UserResponse submitUserResponse(UserResponseInfo userResponseInfo) {
 
         UserResponse userResponse = userResponseUtil.userResponseInfoToUserResponse(userResponseInfo);
-        UserResponse savedUserResponse = userResponseRepository.save(userResponse);
-        return savedUserResponse.getId();
+        return userResponseRepository.save(userResponse);
     }
 }

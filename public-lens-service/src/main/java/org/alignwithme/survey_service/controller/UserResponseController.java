@@ -1,5 +1,6 @@
 package org.alignwithme.survey_service.controller;
 
+import org.alignwithme.survey_service.entity.UserResponse;
 import org.alignwithme.survey_service.service.UserResponseService;
 import org.alignwithme.survey_service.model.UserResponseInfo;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class UserResponseController {
     }
 
     @PostMapping
-    public ResponseEntity<String> submitUserResponse(@RequestBody UserResponseInfo userResponseInfo) {
+    public ResponseEntity<UserResponse> submitUserResponse(@RequestBody UserResponseInfo userResponseInfo) {
         return ResponseEntity.ok(userResponseService.submitUserResponse(userResponseInfo));
     }
 }

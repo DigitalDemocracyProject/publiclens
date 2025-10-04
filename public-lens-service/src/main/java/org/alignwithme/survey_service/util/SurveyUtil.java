@@ -17,12 +17,13 @@ public class SurveyUtil {
         if (survey == null) return null;
 
         SurveyInfo surveyInfo = new SurveyInfo();
+        surveyInfo.setId(survey.getId());
         surveyInfo.setSurveyName(survey.getSurveyName());
         surveyInfo.setDescription(survey.getDescription());
         surveyInfo.setUserInfoId(survey.getUserInfoId());
 
         if (survey.getQuestions() != null) {
-            surveyInfo.setQuestionInfos(
+            surveyInfo.setQuestions(
                     survey.getQuestions().stream()
                             .map(questionUtil::questionToQuestionInfo).collect(Collectors.toList())
             );

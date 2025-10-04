@@ -20,7 +20,7 @@ public class DemographicUtil {
         demographicInfo.setId(demographic.getId());
 
         if (demographic.getQuestions() != null) {
-            demographicInfo.setQuestionInfos(
+            demographicInfo.setQuestions(
                     demographic.getQuestions().stream()
                             .map(questionUtil::questionToQuestionInfo).collect(Collectors.toList())
             );

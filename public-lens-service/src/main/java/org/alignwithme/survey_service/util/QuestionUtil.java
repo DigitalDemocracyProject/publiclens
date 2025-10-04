@@ -22,7 +22,7 @@ public class QuestionUtil {
         questionInfo.setType(question.getType());
 
         if (question.getAnswers() != null) {
-            questionInfo.setAnswerInfos(
+            questionInfo.setAnswers(
                     question.getAnswers().stream()
                             .map(answerUtil::answerToAnswerInfo).collect(Collectors.toList())
             );
@@ -37,11 +37,11 @@ public class QuestionUtil {
         Question question = new Question();
         question.setQuestionId(questionInfo.getQuestionId());
         question.setText(questionInfo.getText());
-        question.setType(question.getType());
+        question.setType(questionInfo.getType());
 
-        if (questionInfo.getAnswerInfos() != null) {
+        if (questionInfo.getAnswers() != null) {
             question.setAnswers(
-                    questionInfo.getAnswerInfos().stream()
+                    questionInfo.getAnswers().stream()
                             .map(answerUtil::answerInfoToAnswer).collect(Collectors.toList())
             );
         }

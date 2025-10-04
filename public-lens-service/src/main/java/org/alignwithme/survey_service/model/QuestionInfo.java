@@ -16,5 +16,5 @@ public class QuestionInfo {
     private String questionId;
     private String text;
     private String type;
-    private List<AnswerInfo> answerInfos;
+    private List<AnswerInfo> answers;
 }

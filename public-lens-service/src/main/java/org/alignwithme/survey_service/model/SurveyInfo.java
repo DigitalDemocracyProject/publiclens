@@ -13,8 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class SurveyInfo {
 
+    private String id;
     private String surveyName;
     private String description;
     private String userInfoId;
-    private List<QuestionInfo> questionInfos;
+    private List<QuestionInfo> questions;
 }
