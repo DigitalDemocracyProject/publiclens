@@ -27,8 +27,8 @@ public class Survey {
     @Field(name = "description")
     private String description;
     
-    @Field(name = "userInfoId")
-    private String userInfoId;
+    @Field(name = "demographicId")
+    private String demographicId;
 
     @Field(name = "questions")
     private List<Question> questions;

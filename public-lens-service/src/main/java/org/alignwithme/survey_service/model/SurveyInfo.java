@@ -16,6 +16,6 @@ public class SurveyInfo {
     private String id;
     private String surveyName;
     private String description;
-    private String userInfoId;
+    private List<QuestionInfo> demographics;
     private List<QuestionInfo> questions;
 }
