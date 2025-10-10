@@ -19,8 +19,54 @@
               <input matInput formControlName="userEmail" />
             </mat-form-field>
           </div>
+
+          <!-- Demographic questions -->
+          <div formGroupName="demographics" *ngFor="let question of formData?.demographics" class="question">
+            <div *ngIf="question.type === 'text'">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>{{ question.text }}</mat-label>
+                <input matInput [formControlName]="question.questionId" />
+              </mat-form-field>
+            </div>
   
-          <div *ngFor="let question of formData?.questions" class="question">
+            <div *ngIf="question.type === 'radio'" class="radio-group">
+              <p class="question-text">{{ question.text }}</p>
+              <mat-radio-group
+                [formControlName]="question.questionId"
+                class="vertical-radio-group">
+                <mat-radio-button
+                  *ngFor="let answer of question.answers"
+                  [value]="answer">
+                  {{ answer.text }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+  
+            <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
+              <p class="question-text">{{ question.text }}</p>
+              <div *ngFor="let answer of question.answers; let i = index">
+                <mat-checkbox [formControl]="getCheckboxControl(question.questionId, i)">
+                  {{ answer.text }}
+                </mat-checkbox>                
+              </div>
+            </div>
+  
+            <div *ngIf="question.type === 'dropdown'">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>{{ question.text }}</mat-label>
+                <mat-select [formControlName]="question.questionId">
+                  <mat-option
+                    *ngFor="let answer of question.answers"
+                    [value]="answer.answerId">
+                    {{ answer.text }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <!-- Survey questions -->
+          <div formGroupName="questions" *ngFor="let question of formData?.questions" class="question">
             <div *ngIf="question.type === 'text'">
               <mat-form-field appearance="fill" class="full-width">
                 <mat-label>{{ question.text }}</mat-label>

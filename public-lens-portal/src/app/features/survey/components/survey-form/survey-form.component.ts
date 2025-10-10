@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { FormDataService } from '../../services/form-data.service';
 import { CookieService } from '../../services/cookie.service';
-import { AnswerInfo, QuestionInfo, UserResponseInfo } from '../../../../shared/shared.module';
+import { AnswerInfo, AnswerType, QuestionInfo, UserResponseInfo } from '../../../../shared/shared.module';
 
 @Component({
   selector: 'app-survey-form',
@@ -23,7 +23,10 @@ export class SurveyFormComponent {
     private router: Router,
     private cookieService: CookieService
   ) {
-    this.form = this.fb.group({});
+    this.form = this.fb.group({
+      demographics: this.fb.group({}),
+      questions: this.fb.group({})
+    });
   }
 
   ngOnInit(): void {
@@ -38,15 +41,29 @@ export class SurveyFormComponent {
     this.form.addControl('userType', new FormControl(''));
     this.form.addControl('userEmail', new FormControl(''));
 
-    data.questions.forEach((question: any) => {
-      // Dynamic form controls
+    // Dynamic form controls for demographics
+    const demographicsForm = this.form.get('demographics') as FormGroup;
+    data.demographics.forEach((question: any) => {
       if (question.type === 'checkbox') {
-        this.form.addControl(
+        demographicsForm.addControl(
           question.questionId,
           this.fb.array(question.answers.map(() => false))
         );
       } else {
-        this.form.addControl(question.questionId, new FormControl(''));
+        demographicsForm.addControl(question.questionId, new FormControl(''));
+      }
+    });
+
+    // Dynamic form controls for survey questions
+    const questionsForm = this.form.get('questions') as FormGroup;
+    data.questions.forEach((question: any) => {
+      if (question.type === 'checkbox') {
+        questionsForm.addControl(
+          question.questionId,
+          this.fb.array(question.answers.map(() => false))
+        );
+      } else {
+        questionsForm.addControl(question.questionId, new FormControl(''));
       }
     });
   }
@@ -57,7 +74,7 @@ export class SurveyFormComponent {
 
   getCheckboxOptions(controlName: string): FormArray {
     return this.form.get(controlName) as FormArray;
-  }  
+  }
 
   submitForm(): void {
     const formValues = this.form.value;
@@ -69,54 +86,31 @@ export class SurveyFormComponent {
     } else {
       userId = formValues['userEmail'];
     }
-    this.doSubmision(userId);
+
+    this.doSubmission(userId);
   }
 
-  private doSubmision(userId: string) {
+  private doSubmission(userId: string) {
 
     if (this.form.valid) {
       const formValues = this.form.value;
+      const { demographics, questions } = formValues;
 
       // Exclude non-survey controls
       const excludedKeys = ['userType', 'userEmail'];
 
       // Build the user answers
-      const userAnswers: QuestionInfo[] = [];
-      Object.keys(formValues).forEach(key => {
-        if (!excludedKeys.includes(key)) {
+      const demographicAnswers = this.buildUserAnswers(demographics, AnswerType.DEMOGRAPHIC);
+      const surveyAnswers = this.buildUserAnswers(questions, AnswerType.SURVEY);
 
-          // Build the selected answer(s)
-          const answers: AnswerInfo[] = [];
-
-          const value = formValues[key];
-          if (value !== null && typeof value === 'object') { // Single answer
-            const answer: AnswerInfo = {
-              answerId: value.answerId,
-              text: value.text
-            };
-            answers.push(answer);
-          }
-          
-          const question = this.formData.questions.find((question: any) => question.questionId === key);
-          if (question) {
-            const userAnswer: QuestionInfo = {
-              questionId: question.questionId,
-              text: question.text,
-              type: question.type,
-              answers: answers
-            };
-            userAnswers.push(userAnswer);
-          }
-        }
-      });
 
       // Build the user response payload
       const surveyId = this.formData.id;
       const userResponsePayload: UserResponseInfo = {
-          surveyId: surveyId,
-          userId: userId,
-          demographics: [],
-          userAnswers: userAnswers
+        surveyId: surveyId,
+        userId: userId,
+        demographics: demographicAnswers,
+        userAnswers: surveyAnswers
       };
 
       // Submit the response to the service
@@ -132,9 +126,42 @@ export class SurveyFormComponent {
     }
   }
 
+  private buildUserAnswers(formValues: any, answerType: AnswerType): QuestionInfo[] {
+
+    const userAnswers: QuestionInfo[] = [];
+    Object.keys(formValues).forEach(key => {
+
+      // Build selected answer(s)
+      const answers: AnswerInfo[] = [];
+
+      const value = formValues[key];
+      if (value !== null && typeof value === 'object') { // Single answer
+        const answer: AnswerInfo = {
+          answerId: value.answerId,
+          text: value.text
+        };
+        answers.push(answer);
+      }
+
+      const questions = answerType === AnswerType.DEMOGRAPHIC ? this.formData.demographics : this.formData.questions;
+      const question = questions.find((question: any) => question.questionId === key);
+      if (question) {
+        const userAnswer: QuestionInfo = {
+          questionId: question.questionId,
+          text: question.text,
+          type: question.type,
+          answers: answers
+        };
+        userAnswers.push(userAnswer);
+      }
+    });
+
+    return userAnswers;
+  }
+
   private getAnonymousUserId(): any {
 
-    const COOKIE_KEY = 'annonymous-user-id';
+    const COOKIE_KEY = 'anonymous-user-id';
     let cookieId = this.cookieService.getCookie(COOKIE_KEY);
     if (!cookieId) {
       cookieId = this.generateUniqueId();
