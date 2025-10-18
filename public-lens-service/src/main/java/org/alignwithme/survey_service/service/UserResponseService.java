@@ -6,6 +6,9 @@ import org.alignwithme.survey_service.model.UserResponseInfo;
 import org.alignwithme.survey_service.util.UserResponseUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserResponseService {
 
@@ -22,5 +25,12 @@ public class UserResponseService {
 
         UserResponse userResponse = userResponseUtil.userResponseInfoToUserResponse(userResponseInfo);
         return userResponseRepository.save(userResponse);
+    }
+
+    public List<UserResponseInfo> getUserResponsesBySurveyId(String surveyId) {
+
+        List<UserResponse> userResponses = userResponseRepository.findBySurveyId(surveyId);
+        return userResponses.stream()
+                .map(userResponseUtil::userResponseToUserResponseInfo).collect(Collectors.toList());
     }
 }
