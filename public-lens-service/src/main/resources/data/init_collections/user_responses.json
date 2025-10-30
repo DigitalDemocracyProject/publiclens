@@ -1,0 +1,333 @@
+[{
+  "_id": {
+    "$oid": "68e8c6a636d30957483a183e"
+  },
+  "surveyId": "68e14b2cc5cf813189b25c86",
+  "userId": "tnl7tjjfd",
+  "demographics": [
+    {
+      "questionId": "d1",
+      "text": "Age group?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d1_a3",
+          "text": "35 – 44 years"
+        }
+      ]
+    },
+    {
+      "questionId": "d2",
+      "text": "Gender?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d2_a1",
+          "text": "Male"
+        }
+      ]
+    },
+    {
+      "questionId": "d3",
+      "text": "District?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d3_a2",
+          "text": "Kalutara"
+        }
+      ]
+    },
+    {
+      "questionId": "d4",
+      "text": "Voting behavior in previous election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d4_a1",
+          "text": "Voted for the ruling party"
+        }
+      ]
+    }
+  ],
+  "userAnswers": [
+    {
+      "questionId": "q1",
+      "text": "What is your opinion on the role of the government in the economy?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q1_a1",
+          "text": "Believe in an economy mostly controlled by government"
+        }
+      ]
+    },
+    {
+      "questionId": "q2",
+      "text": "What is your opinion on taxation and wealth distribution?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q2_a1",
+          "text": "Support higher taxes on the wealthy"
+        }
+      ]
+    },
+    {
+      "questionId": "q3",
+      "text": "What is your opinion on subsidized goods and services?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q3_a1",
+          "text": "Strongly support subsidies to ensure affordability"
+        }
+      ]
+    },
+    {
+      "questionId": "q4",
+      "text": "How do you view government involvement in public transport?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q4_a1",
+          "text": "Strongly support extensive government investment"
+        }
+      ]
+    },
+    {
+      "questionId": "q5",
+      "text": "What is your stance on government's involvement in healthcare?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q5_a1",
+          "text": "Strongly support universal healthcare coverage"
+        }
+      ]
+    }
+  ],
+  "_class": "org.alignwithme.survey_service.entity.UserResponse"
+},
+{
+  "_id": {
+    "$oid": "68e8c6e936d30957483a183f"
+  },
+  "surveyId": "68e14b2cc5cf813189b25c86",
+  "userId": "tnl7tjjfd",
+  "demographics": [
+    {
+      "questionId": "d1",
+      "text": "Age group?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d1_a2",
+          "text": "25 – 34 years"
+        }
+      ]
+    },
+    {
+      "questionId": "d2",
+      "text": "Gender?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d2_a2",
+          "text": "Female"
+        }
+      ]
+    },
+    {
+      "questionId": "d3",
+      "text": "District?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d3_a3",
+          "text": "Gampaha"
+        }
+      ]
+    },
+    {
+      "questionId": "d4",
+      "text": "Voting behavior in previous election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d4_a2",
+          "text": "Voted for another party"
+        }
+      ]
+    }
+  ],
+  "userAnswers": [
+    {
+      "questionId": "q1",
+      "text": "What is your opinion on the role of the government in the economy?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q1_a3",
+          "text": "Believe in deregulation and privatization of most sectors"
+        }
+      ]
+    },
+    {
+      "questionId": "q2",
+      "text": "What is your opinion on taxation and wealth distribution?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q2_a4",
+          "text": "Support significant tax cuts and minimal redistribution"
+        }
+      ]
+    },
+    {
+      "questionId": "q3",
+      "text": "What is your opinion on subsidized goods and services?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q3_a3",
+          "text": "Advocate for minimal government intervention"
+        }
+      ]
+    },
+    {
+      "questionId": "q4",
+      "text": "How do you view government involvement in public transport?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q4_a3",
+          "text": "Advocate for minimal government involvement"
+        }
+      ]
+    },
+    {
+      "questionId": "q5",
+      "text": "What is your stance on government's involvement in healthcare?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q5_a3",
+          "text": "Advocate for market-driven healthcare solutions"
+        }
+      ]
+    }
+  ],
+  "_class": "org.alignwithme.survey_service.entity.UserResponse"
+},
+{
+  "_id": {
+    "$oid": "68e8c70336d30957483a1840"
+  },
+  "surveyId": "68e14b2cc5cf813189b25c86",
+  "userId": "tnl7tjjfd",
+  "demographics": [
+    {
+      "questionId": "d1",
+      "text": "Age group?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d1_a5",
+          "text": "55 – 64 years"
+        }
+      ]
+    },
+    {
+      "questionId": "d2",
+      "text": "Gender?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d2_a1",
+          "text": "Male"
+        }
+      ]
+    },
+    {
+      "questionId": "d3",
+      "text": "District?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d3_a1",
+          "text": "Colombo"
+        }
+      ]
+    },
+    {
+      "questionId": "d4",
+      "text": "Voting behavior in previous election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d4_a4",
+          "text": "Do not wish to disclose"
+        }
+      ]
+    }
+  ],
+  "userAnswers": [
+    {
+      "questionId": "q1",
+      "text": "What is your opinion on the role of the government in the economy?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q1_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q2",
+      "text": "What is your opinion on taxation and wealth distribution?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q2_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q3",
+      "text": "What is your opinion on subsidized goods and services?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q3_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q4",
+      "text": "How do you view government involvement in public transport?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q4_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q5",
+      "text": "What is your stance on government's involvement in healthcare?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q5_a5",
+          "text": "No opinion"
+        }
+      ]
+    }
+  ],
+  "_class": "org.alignwithme.survey_service.entity.UserResponse"
+}]

@@ -1,0 +1,321 @@
+[{
+  "_id": {
+    "$oid": "68a437137f26c33bd41c2f77"
+  },
+  "surveyName": "Voting Behaviour",
+  "description": "Analyze voting behaviour",
+  "questions": [
+    {
+      "questionId": "q4",
+      "text": "Voting behavior in previous election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q4_a1",
+          "text": "Voted for the ruling party"
+        },
+        {
+          "answerId": "q4_a2",
+          "text": "Voted for another party"
+        },
+        {
+          "answerId": "q4_a3",
+          "text": "Did not vote"
+        },
+        {
+          "answerId": "q4_a4",
+          "text": "Do not wish to disclose"
+        }
+      ]
+    },
+    {
+      "questionId": "q5",
+      "text": "What is your opinion on the increased state sector salaries?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q5_a1",
+          "text": "Strongly agree"
+        },
+        {
+          "answerId": "q5_a2",
+          "text": "Agree"
+        },
+        {
+          "answerId": "q5_a3",
+          "text": "Neutral"
+        },
+        {
+          "answerId": "q5_a4",
+          "text": "Oppose"
+        },
+        {
+          "answerId": "q5_a5",
+          "text": "Strongly oppese"
+        }
+      ]
+    },
+    {
+      "questionId": "q6",
+      "text": "How effective do you think the government has been in maintaining law and order, particularly in addressing underworld and drug-related activities?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q6_a1",
+          "text": "Very Effective"
+        },
+        {
+          "answerId": "q6_a2",
+          "text": "Somewhat Effective"
+        },
+        {
+          "answerId": "q6_a3",
+          "text": "Neutral"
+        },
+        {
+          "answerId": "q6_a4",
+          "text": "Ineffective"
+        },
+        {
+          "answerId": "q6_a5",
+          "text": "Very Ineffective"
+        }
+      ]
+    },
+    {
+      "questionId": "q7",
+      "text": "Do you believe the government is delivering on its promises regarding education reforms?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q7_a1",
+          "text": "Yes, completely"
+        },
+        {
+          "answerId": "q7_a2",
+          "text": "Somewhat"
+        },
+        {
+          "answerId": "q7_a3",
+          "text": "Neutral"
+        },
+        {
+          "answerId": "q7_a4",
+          "text": "Not really"
+        },
+        {
+          "answerId": "q7_a5",
+          "text": "Not at all"
+        }
+      ]
+    },
+    {
+      "questionId": "q8",
+      "text": "In your opinion, has the quality of the state health sector improved compared to the year before(availability of medicines, queues, bed availability, doctor availability, etc)?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q8_a1",
+          "text": "Significantly Improved"
+        },
+        {
+          "answerId": "q8_a2",
+          "text": "Slightly Improved"
+        },
+        {
+          "answerId": "q8_a3",
+          "text": "Same as before"
+        },
+        {
+          "answerId": "q8_a4",
+          "text": "Slightly Degraded"
+        },
+        {
+          "answerId": "q8_a5",
+          "text": "Significantly Degraded"
+        }
+      ]
+    },
+    {
+      "questionId": "q9",
+      "text": "Which political party do you believe should win the upcoming election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q9_a1",
+          "text": "NPP"
+        },
+        {
+          "answerId": "q9_a2",
+          "text": "SJB"
+        },
+        {
+          "answerId": "q9_a3",
+          "text": "SLPP"
+        },
+        {
+          "answerId": "q9_a4",
+          "text": "UNP"
+        },
+        {
+          "answerId": "q9_a5",
+          "text": "Other"
+        },
+        {
+          "answerId": "q9_a6",
+          "text": "Undecided"
+        },
+        {
+          "answerId": "q9_a7",
+          "text": "Prefer not to say"
+        }
+      ]
+    }
+  ],
+  "demographicId": "68e62c6d249d45f63fc70cd9"
+},
+{
+  "_id": {
+    "$oid": "68e14b2cc5cf813189b25c86"
+  },
+  "surveyName": "Government Policies",
+  "description": "Analyze opinion of the government policies",
+  "questions": [
+    {
+      "questionId": "q1",
+      "text": "What is your opinion on the role of the government in the economy?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q1_a1",
+          "text": "Believe in an economy mostly controlled by government"
+        },
+        {
+          "answerId": "q1_a2",
+          "text": "Prefer a mixed economy with some government involvement"
+        },
+        {
+          "answerId": "q1_a3",
+          "text": "Believe in deregulation and privatization of most sectors"
+        },
+        {
+          "answerId": "q1_a4",
+          "text": "Advocate for laissez-faire capitalism with minimal regulation"
+        },
+        {
+          "answerId": "q1_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q2",
+      "text": "What is your opinion on taxation and wealth distribution?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q2_a1",
+          "text": "Support higher taxes on the wealthy"
+        },
+        {
+          "answerId": "q2_a2",
+          "text": "Prefer progressive tax with moderate redistribution"
+        },
+        {
+          "answerId": "q2_a3",
+          "text": "Advocate for lower taxes and limited government role"
+        },
+        {
+          "answerId": "q2_a4",
+          "text": "Support significant tax cuts and minimal redistribution"
+        },
+        {
+          "answerId": "q2_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q3",
+      "text": "What is your opinion on subsidized goods and services?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q3_a1",
+          "text": "Strongly support subsidies to ensure affordability"
+        },
+        {
+          "answerId": "q3_a2",
+          "text": "Prefer targeted subsidies only for those in need"
+        },
+        {
+          "answerId": "q3_a3",
+          "text": "Advocate for minimal government intervention"
+        },
+        {
+          "answerId": "q3_a4",
+          "text": "Strongly oppose government subsidies"
+        },
+        {
+          "answerId": "q3_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q4",
+      "text": "How do you view government involvement in public transport?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q4_a1",
+          "text": "Strongly support extensive government investment"
+        },
+        {
+          "answerId": "q4_a2",
+          "text": "Prefer a balanced public-private approach"
+        },
+        {
+          "answerId": "q4_a3",
+          "text": "Advocate for minimal government involvement"
+        },
+        {
+          "answerId": "q4_a4",
+          "text": "Oppose significant government spending"
+        },
+        {
+          "answerId": "q4_a5",
+          "text": "No opinion"
+        }
+      ]
+    },
+    {
+      "questionId": "q5",
+      "text": "What is your stance on government's involvement in healthcare?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "q5_a1",
+          "text": "Strongly support universal healthcare coverage"
+        },
+        {
+          "answerId": "q5_a2",
+          "text": "Prefer a mixed system with both public and private providers"
+        },
+        {
+          "answerId": "q5_a3",
+          "text": "Advocate for market-driven healthcare solutions"
+        },
+        {
+          "answerId": "q5_a4",
+          "text": "Believe healthcare should be fully privatized"
+        },
+        {
+          "answerId": "q5_a5",
+          "text": "No opinion"
+        }
+      ]
+    }
+  ],
+  "demographicId": "68e62c6d249d45f63fc70cd9"
+}]
