@@ -12,10 +12,14 @@ A survey system which can be used to conduct public opinion polls. This is a dyn
 6. cd %your-subdirectory%
 7. Open each project in your preffered IDE
 
-## Create a Database
+## Create a Database and Collections and Import Init Data
 1. Install MongoDB on your local machine
-2. Create a database called public_lens
+2. Create a database: public_lens
+3. Create three collections: demographics, surveys, user_responses
+4. Find backup data(JSON files) in the public-lens-service: /src/main/resources/data/init_collections
+5. Import data to the created collections using backup files
 
 ## Start the Application
-1. Run the public-lens-service first: This will add required initial datasets
+1. Run the public-lens-service first
 2. Then you can run the public-lens-portal and public-lens-analytics-service by any order
+3. Check the running application: http://localhost:4200
