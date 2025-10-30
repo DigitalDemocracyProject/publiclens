@@ -15,5 +15,7 @@ A survey system which can be used to conduct public opinion polls. This is a dyn
 ## Create a Database
 1. Install MongoDB on your local machine
 2. Create a database called public_lens
-3. Run the public-lens-service first: This will add required initial datasets
-4. Then you can run the public-lens-portal and public-lens-analytics-service by any order
+
+## Start the Application
+1. Run the public-lens-service first: This will add required initial datasets
+2. Then you can run the public-lens-portal and public-lens-analytics-service by any order
