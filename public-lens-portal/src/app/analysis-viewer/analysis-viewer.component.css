@@ -1,0 +1,42 @@
+/* analysis-viewer.component.css */
+
+.analysis-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.crosstab-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Table body */
+tbody {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* row and column headers */
+thead, th {
+  background-color: #92a2fd !important;
+}
+
+/* Data cells */
+td {
+  text-align: center;
+}

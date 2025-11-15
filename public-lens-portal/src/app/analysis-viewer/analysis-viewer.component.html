@@ -1,0 +1,41 @@
+@if (results().length > 0) {
+
+  <div class="analysis-container">
+
+    @for (result of results(); track result['title']) {
+      <div class="crosstab-card">
+        <h3>{{ result.title }}</h3>
+        @for (table of result.tables; track table.subtitle) {
+          <h4>{{ table.subtitle }}</h4>
+          <table>
+            <thead>
+              <tr>
+                <th></th> @for (colName of table.table.columns; track $index) {
+                  <th>{{ colName }}</th>
+                }
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (rowName of table.table.index; track $index; let i = $index) {
+
+                <tr>
+                  <th>{{ rowName }}</th>
+
+                  @for (cellData of table.table.data[i]; track $index) {
+                    <td>{{ cellData }}</td>
+                  }
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </div>
+
+    } </div>
+
+} @else {
+
+  <p>Loading analysis data...</p>
+
+}

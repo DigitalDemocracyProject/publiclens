@@ -5,6 +5,7 @@ import { SurveyFormComponent } from './features/survey/components/survey-form/su
 import { SuccessComponent } from './features/survey/components/success/success.component';
 import { ResultComponent } from './features/result/components/result/result.component';
 import { SummaryComponent } from './features/result/components/summary/summary.component';
+import { AnalysisViewerComponent } from './analysis-viewer/analysis-viewer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'surveys', component: SurveyFormComponent },
   { path: 'success', component: SuccessComponent },
   { path: 'result', component: ResultComponent },
-  { path: 'summary', component: SummaryComponent }
+  { path: 'summary', component: SummaryComponent },
+  { path: 'analysis', component: AnalysisViewerComponent }
 ];
 
 @NgModule({

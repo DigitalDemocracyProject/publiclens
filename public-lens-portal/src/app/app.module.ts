@@ -7,7 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FeaturesModule } from './features/features.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
+import { AnalysisViewerComponent } from './analysis-viewer/analysis-viewer.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import { provideHttpClient } from '@angular/common/http';
     AppRoutingModule,
     CoreModule,
     FeaturesModule,
-    SharedModule
+    SharedModule,
+    AnalysisViewerComponent
   ],
   providers: [
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(withInterceptorsFromDi(), withFetch())
   ],
   bootstrap: [AppComponent]
 })
