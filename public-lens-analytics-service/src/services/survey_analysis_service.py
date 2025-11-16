@@ -85,12 +85,16 @@ def analyze_survey_data():
             
             try:
                 # Create the crosstab
-                crosstab = pd.crosstab(df[d_col], df[q_col])
+                crosstab = pd.crosstab(df[d_col], df[q_col], margins = True, margins_name = "Totals", normalize = "index")
                 #print(crosstab)
+                data = crosstab.values.tolist()
+                for i in range(len(data)):
+                    for j in range(len(data[i])):
+                        data[i][j] = str(data[i][j]*100)+"%"
                 table_data = {
                     "index": crosstab.index.tolist(),       # Row headers
                     "columns": crosstab.columns.tolist(), # Column headers
-                    "data": crosstab.values.tolist()      # The data cells
+                    "data": data      # The data cells
                 }
                 tables.append({"subtitle": title,"table": table_data})
             except Exception as e:
