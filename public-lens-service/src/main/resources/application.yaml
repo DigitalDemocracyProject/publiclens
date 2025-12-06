@@ -1,0 +1,9 @@
+server:
+    port: 8080
+spring:
+  application:
+    name: public-lens-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/public_lens
+      socketTimeout: 20000

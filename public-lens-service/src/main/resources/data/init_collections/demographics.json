@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "68e62c6d249d45f63fc70cd9"
+  },
+  "questions": [
+    {
+      "questionId": "d1",
+      "text": "Age group?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d1_a1",
+          "text": "18 – 24 years"
+        },
+        {
+          "answerId": "d1_a2",
+          "text": "25 – 34 years"
+        },
+        {
+          "answerId": "d1_a3",
+          "text": "35 – 44 years"
+        },
+        {
+          "answerId": "d1_a4",
+          "text": "45 – 54 years"
+        },
+        {
+          "answerId": "d1_a5",
+          "text": "55 – 64 years"
+        },
+        {
+          "answerId": "d1_a6",
+          "text": "65 years and older"
+        }
+      ]
+    },
+    {
+      "questionId": "d2",
+      "text": "Gender?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d2_a1",
+          "text": "Male"
+        },
+        {
+          "answerId": "d2_a2",
+          "text": "Female"
+        },
+        {
+          "answerId": "d2_a3",
+          "text": "Other"
+        }
+      ]
+    },
+    {
+      "questionId": "d3",
+      "text": "District?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d3_a1",
+          "text": "Colombo"
+        },
+        {
+          "answerId": "d3_a2",
+          "text": "Kalutara"
+        },
+        {
+          "answerId": "d3_a3",
+          "text": "Gampaha"
+        }
+      ]
+    },
+    {
+      "questionId": "d4",
+      "text": "Voting behavior in previous election?",
+      "type": "radio",
+      "answers": [
+        {
+          "answerId": "d4_a1",
+          "text": "Voted for the ruling party"
+        },
+        {
+          "answerId": "d4_a2",
+          "text": "Voted for another party"
+        },
+        {
+          "answerId": "d4_a3",
+          "text": "Did not vote"
+        },
+        {
+          "answerId": "d4_a4",
+          "text": "Do not wish to disclose"
+        }
+      ]
+    }
+  ]
+}]

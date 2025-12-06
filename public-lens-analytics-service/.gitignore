@@ -1,0 +1,105 @@
+# --- Byte-compiled / optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Distribution / Packaging ---
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+*.egg
+
+# --- Installer logs ---
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Unit test / coverage reports ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+*.hypothesis/
+.pytest_cache/
+
+# --- Environment / configuration ---
+.env
+.env.*
+*.ini
+*.cfg
+*.toml
+*.yaml
+*.yml
+instance/
+config.pyc
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# --- macOS / Linux / Windows system files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# --- Logs ---
+*.log
+logs/
+*.out
+
+# --- Jupyter / Notebook (if any) ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- Data Files ---
+data/
+*.csv
+*.xlsx
+*.parquet
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Temporary / cache ---
+.tmp/
+temp/
+*.tmp
+.cache/
+__pypackages__/
+.mypy_cache/
+.pyre/
+.pytype/
+
+# --- Docker / Compose ---
+*.pid
+*.pid.lock
+docker-compose.override.yml
+
+# --- Coverage tools / reports ---
+.pytest_cache/
+coverage_html_report/
+
+# --- Misc ---
+*.bak
+*.orig
