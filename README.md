@@ -23,3 +23,27 @@ A survey system which can be used to conduct public opinion polls. This is a dyn
 1. Run the public-lens-service first
 2. Then you can run the public-lens-portal and public-lens-analytics-service by any order
 3. Check the running application: http://localhost:4200
+
+## Run on Local
+### public-lens-service - Java
+1. Install Java/ JDK: preffered version 21
+2. Navigate to the project folder: ../publiclens/public-lens-service
+3. Open the project with IntelliJ IDEA or any other IDE                           
+4. Resolve dependencies and build the project
+5. Run on the IDE
+
+### public-lens-analytics-service - Python
+1. Install Python: preffered version 3.9.6
+2. Navigate to the project folder: ../publiclens/public-lens-analytics-service                        
+3. Run the commands below in CMD or terminal:
+   - python3 -m venv venv
+   - source venv/bin/activate (Mac/ Linux) or venv\Scripts\activate (Windows)
+   - pip install -r requirements.txt
+   - uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+
+### public-lens-portal - Angular
+1. Install NodeJS: preffered version v23.7.0
+2. Navigate to the project folder: ../publiclens/public-lens-analytics-portal
+3. Open CMD or terminal and run "npm install"
+4. Run the application on CMD or terminal using the command, "ng serve"
+5. Access the application with http://localhost:4200 in any browser
