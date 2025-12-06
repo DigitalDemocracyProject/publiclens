@@ -1,0 +1,13 @@
+{
+  "aws_project_region": "eu-north-1",
+  "aws_cognito_region": "eu-north-1",
+  "aws_user_pools_id": "eu-north-1_bk9yvbyG5",
+  "aws_user_pools_web_client_id": "553h7c1lf326qo9t0u1ebv7v3mk",
+  "oauth": {
+    "domain": "https://eu-north-1bk9yvbyg5.auth.eu-north-1.amazoncognito.com",
+    "scope": ["openid", "email", "profile"],
+    "redirectSignIn": "http://localhost:4200/home",
+    "redirectSignOut": "http://localhost:4200/home",
+    "responseType": "code"
+  }
+}
