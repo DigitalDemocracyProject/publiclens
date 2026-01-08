@@ -7,12 +7,12 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: center; /* keeps title centered */
+  justify-content: center;
   align-items: center;
   padding: 15px;
   background-color: #3f51b5;
   color: white;
-  position: relative; /* allows positioning child relative to header */
+  position: relative;
 }
 
 header h1 {
@@ -52,4 +52,28 @@ header h1 {
 
 .login-btn:hover {
   background-color: #e6e6e6;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  color: #3f51b5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.user-text {
+  position: absolute;
+  right: 110px;
+  font-size: 13px;
 }
