@@ -1,35 +1,211 @@
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 16px;
+.survey-page {
+  min-height: 100%;
+  padding: 1.5rem 1rem 3rem;
+  background: linear-gradient(165deg, #e8f4f4 0%, #f5f7fa 45%, #eef2f7 100%);
 }
 
-.full-width {
-    width: 100%;
+.survey-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(15, 60, 70, 0.08);
+  padding: 1.75rem 1.5rem 2rem;
 }
 
-.checkbox-group {
-    margin: 16px 0;
+@media (min-width: 600px) {
+  .survey-card {
+    padding: 2rem 2.25rem 2.5rem;
+  }
 }
 
-.vertical-radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.survey-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d3d45;
+  margin: 0 0 1.25rem;
+  line-height: 1.3;
 }
 
-.mat-radio-button {
-    margin: 0;
+.progress-wrap {
+  height: 8px;
+  background: #e2edf0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0d9488, #14b8a6);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  color: #5c7a80;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.section-card {
+  border: 1px solid #e2edf0;
+  border-radius: 12px;
+  padding: 1.25rem 1rem 1.35rem;
+  margin-bottom: 1rem;
+  background: #fafcfd;
+}
+
+.section-card-invalid {
+  border-color: #f87171;
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.35);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0d3d45;
+  margin: 0 0 1rem;
+}
+
+.section-icon {
+  display: flex;
+  color: #0d9488;
+  flex-shrink: 0;
+}
+
+.section-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.radio-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+/* User type: two short choices on one row when space allows */
+.radio-grid--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.radio-grid--inline > .radio-option {
+  flex: 1 1 calc(50% - 0.35rem);
+  min-width: min(100%, 10rem);
+  width: auto;
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #cfe3e6;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.radio-option:hover,
+.checkbox-option:hover {
+  border-color: #5eead4;
+}
+
+.radio-input {
+  margin-top: 0.2rem;
+  accent-color: #0d9488;
+}
+
+.radio-label {
+  font-size: 0.95rem;
+  color: #1e3a40;
+  line-height: 1.35;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5c7a80;
+  margin: 0 0 0.5rem;
+}
+
+.district-field-wrap {
+  margin-top: 1rem;
 }
 
 .question-text {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3a40;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.question-block {
+  margin-bottom: 1.25rem;
+}
+
+.question-block:last-child {
+  margin-bottom: 0;
+}
+
+.error-msg {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin: 0.5rem 0 0;
+}
+
+.email-field {
+  margin-top: 1rem;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(180deg, #14b8a6 0%, #0d9488 100%);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+::ng-deep .district-autocomplete-field .mat-mdc-form-field-subscript-wrapper {
+  margin-top: 0.35rem;
 }

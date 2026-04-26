@@ -1,55 +1,112 @@
-header {
-  text-align: center;
-  background-color: #3f51b5;
-  color: white;
-  padding: 20px 0;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.header-container {
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
   display: flex;
-  justify-content: center; /* keeps title centered */
   align-items: center;
-  padding: 15px;
-  background-color: #3f51b5;
-  color: white;
-  position: relative; /* allows positioning child relative to header */
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 
-.nav-bar {
-  background: #3f51b5;
-  color: white;
-  padding: 10px;
+.logo-link:hover .logo-text {
+  color: #0d9488;
+}
+
+.logo-mark {
   display: flex;
+  color: #14b8a6;
+}
+
+.logo-mark svg {
+  display: block;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex: 1;
   justify-content: center;
 }
 
-.nav-bar a {
-  color: white;
+.site-nav a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #475569;
   text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: #0f172a;
+}
+
+.site-nav a.active {
+  color: #0f172a;
+  border-bottom-color: #14b8a6;
 }
 
 .login-btn {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 6px 12px;
-  border-radius: 5px;
+  flex-shrink: 0;
+  padding: 0.5rem 1.1rem;
   border: none;
-  background-color: white;
-  color: #3f51b5;
-  font-weight: bold;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #14b8a6 0%, #0d9488 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .login-btn:hover {
-  background-color: #e6e6e6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.4);
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 0.25rem;
+  }
+
+  .login-btn {
+    margin-left: auto;
+  }
+}
+
+.site-main {
+  min-height: calc(100vh - 64px);
 }

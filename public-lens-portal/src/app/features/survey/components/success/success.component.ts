@@ -12,6 +12,6 @@ export class SuccessComponent {
   constructor(private router: Router) {}
 
   goHome(): void {
-    this.router.navigate(['/']); // Navigate to the home page
+    this.router.navigate(['/home']);
   }
 }

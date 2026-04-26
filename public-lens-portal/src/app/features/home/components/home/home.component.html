@@ -1,3 +1,39 @@
-<div class="container">
-  <h1 class="center">Home Page</h1>
-</div>
+<section class="landing" aria-labelledby="landing-heading">
+  <div class="landing-inner">
+    <h1 id="landing-heading" class="headline">
+      <span class="headline-gradient">Your Values. Their Positions. See the Alignment.</span>
+    </h1>
+    <p class="subhead">
+      Compare your views with public opinion on the issues that matter. Participate in surveys and explore results.
+    </p>
+
+    <div class="feature-grid">
+      <article class="feature-card feature-card--teal">
+        <div class="feature-badge badge-1" aria-hidden="true">1</div>
+        <h2 class="feature-title">Take a survey</h2>
+        <p class="feature-text">
+          Answer questions on topics you care about—anonymously or with an account.
+        </p>
+      </article>
+      <article class="feature-card feature-card--purple">
+        <div class="feature-badge badge-2" aria-hidden="true">2</div>
+        <h2 class="feature-title">See results</h2>
+        <p class="feature-text">
+          View summaries, detailed breakdowns, and analysis once surveys close.
+        </p>
+      </article>
+      <article class="feature-card feature-card--orange">
+        <div class="feature-badge badge-3" aria-hidden="true">3</div>
+        <h2 class="feature-title">Compare</h2>
+        <p class="feature-text">
+          See how your responses align with the broader public.
+        </p>
+      </article>
+    </div>
+
+    <div class="cta-row">
+      <a routerLink="/surveys" class="btn btn-primary">Go to Surveys</a>
+      <a routerLink="/result" class="btn btn-outline">See Results</a>
+    </div>
+  </div>
+</section>

@@ -1,18 +1,65 @@
-.success-container {
-    text-align: center;
-    margin-top: 50px;
+.success-page {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(165deg, #e8f4f4 0%, #f5f7fa 50%, #eef2f7 100%);
 }
 
-h1 {
-    color: #4caf50;
-    font-size: 2.5em;
+.success-card {
+  max-width: 420px;
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px rgba(15, 60, 70, 0.08);
 }
 
-p {
-    font-size: 1.2em;
-    color: #555;
+.success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  color: #0d9488;
 }
 
-button {
-    margin-top: 20px;
+.success-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d3d45;
+  margin: 0 0 0.75rem;
+}
+
+.success-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #5c7a80;
+  margin: 0 0 1.5rem;
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-outline {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: transparent;
+  color: #0d9488;
+  border: 2px solid #0d9488;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(13, 148, 136, 0.08);
 }

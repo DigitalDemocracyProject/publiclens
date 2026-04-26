@@ -1,12 +1,24 @@
-<header class="header-container">
-  <h1>Align With Me</h1>
-  <button class="login-btn" (click)="auth.login()">Sign In</button>
+<header class="site-header">
+  <div class="header-inner">
+    <a routerLink="/home" class="logo-link">
+      <span class="logo-mark" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l8.5 9.5L12 22l-8.5-10.5L12 2z" />
+        </svg>
+      </span>
+      <span class="logo-text">AlignwithMe</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/surveys" routerLinkActive="active">Surveys</a>
+      <a routerLink="/result" routerLinkActive="active">Results</a>
+    </nav>
+
+    <button type="button" class="login-btn" (click)="auth.login()">Login</button>
+  </div>
 </header>
-<nav mat-tab-nav-bar class="nav-bar">
-  <a mat-tab-link routerLink="/home" routerLinkActive="mat-tab-label-active">Home</a>
-  <a mat-tab-link routerLink="/surveys" routerLinkActive="mat-tab-label-active">Surveys</a>
-  <a mat-tab-link routerLink="/summary" routerLinkActive="mat-tab-label-active">Summary</a>
-  <a mat-tab-link routerLink="/result" routerLinkActive="mat-tab-label-active">Result</a>
-  <a mat-tab-link routerLink="/analysis" routerLinkActive="mat-tab-label-active">Analysis</a>
-</nav>
-<router-outlet></router-outlet>
+
+<main class="site-main">
+  <router-outlet></router-outlet>
+</main>

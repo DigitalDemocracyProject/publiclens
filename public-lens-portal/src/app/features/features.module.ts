@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomeModule } from './home/home.module';
 import { SurveyModule } from './survey/survey.module';
-import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ResultComponent } from './result/components/result/result.component';
 import { SummaryComponent } from './result/components/summary/summary.component';
@@ -17,7 +18,8 @@ import { SummaryComponent } from './result/components/summary/summary.component'
     CommonModule,
     HomeModule,
     SurveyModule,
-    MatTableModule
+    MatFormFieldModule,
+    MatSelectModule,
   ]
 })
 export class FeaturesModule { }
