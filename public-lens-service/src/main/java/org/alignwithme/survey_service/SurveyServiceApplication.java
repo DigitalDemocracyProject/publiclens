@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SurveyServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SurveyServiceApplication.class, args);
+        SpringApplication.run(SurveyServiceApplication.class, args);
 	}
-
 }

@@ -22,3 +22,30 @@
 <main class="site-main">
   <router-outlet></router-outlet>
 </main>
+<header class="header-container">
+  <h1>Align With Me</h1>
+
+  <!-- Show username when logged in -->
+  <span *ngIf="auth.isLoggedIn()" class="user-text">
+    {{ auth.getEmail() }}
+  </span>
+
+  <!-- Sign In button -->
+  <button class="login-btn" *ngIf="!auth.isLoggedIn()" (click)="auth.login()">
+    Sign In
+  </button>
+
+  <!-- Sign Out button -->
+  <button class="logout-btn" *ngIf="auth.isLoggedIn()" (click)="auth.logout()">
+    Sign Out
+  </button>
+</header>
+
+<nav mat-tab-nav-bar class="nav-bar">
+  <a mat-tab-link routerLink="/home" routerLinkActive="mat-tab-label-active">Home</a>
+  <a mat-tab-link routerLink="/surveys" routerLinkActive="mat-tab-label-active">Surveys</a>
+  <a mat-tab-link routerLink="/summary" routerLinkActive="mat-tab-label-active">Summary</a>
+  <a mat-tab-link routerLink="/result" routerLinkActive="mat-tab-label-active">Result</a>
+  <a mat-tab-link routerLink="/analysis" routerLinkActive="mat-tab-label-active">Analysis</a>
+</nav>
+<router-outlet></router-outlet>
