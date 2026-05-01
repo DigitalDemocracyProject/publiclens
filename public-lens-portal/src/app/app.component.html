@@ -1,7 +1,22 @@
 <header class="header-container">
   <h1>Align With Me</h1>
-  <button class="login-btn" (click)="auth.login()">Sign In</button>
+
+  <!-- Show username when logged in -->
+  <span *ngIf="auth.isLoggedIn()" class="user-text">
+    {{ auth.getEmail() }}
+  </span>
+
+  <!-- Sign In button -->
+  <button class="login-btn" *ngIf="!auth.isLoggedIn()" (click)="auth.login()">
+    Sign In
+  </button>
+
+  <!-- Sign Out button -->
+  <button class="logout-btn" *ngIf="auth.isLoggedIn()" (click)="auth.logout()">
+    Sign Out
+  </button>
 </header>
+
 <nav mat-tab-nav-bar class="nav-bar">
   <a mat-tab-link routerLink="/home" routerLinkActive="mat-tab-label-active">Home</a>
   <a mat-tab-link routerLink="/surveys" routerLinkActive="mat-tab-label-active">Surveys</a>
