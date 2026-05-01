@@ -20,13 +20,13 @@ import { provideHttpClient } from '@angular/common/http';
     AppRoutingModule,
     CoreModule,
     FeaturesModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
-    provideHttpClient(),
+    provideHttpClient()
   ],
-  bootstrap: [],
+  bootstrap: []
 })
 export class AppModule {}
