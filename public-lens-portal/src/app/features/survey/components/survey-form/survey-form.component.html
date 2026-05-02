@@ -1,125 +1,209 @@
-<div class="container" *ngIf="formData">
-    <mat-card>
-      <mat-card-title>{{ formData?.title }}</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="submitForm()">
-          <div class="user-type-section">
-            <p class="question-text">Select User Type:</p>
-            <mat-radio-group
-              [formControlName]="'userType'"
-              class="vertical-radio-group">
-              <mat-radio-button value="ANONYMOUS">Anonymous</mat-radio-button>
-              <mat-radio-button value="Email">Email</mat-radio-button>
-            </mat-radio-group>
+<div class="survey-page" *ngIf="formData">
+  <div class="survey-card">
+    <h1 class="survey-title">{{ formData?.title }}</h1>
+
+    <!-- Progress indicator -->
+    <div class="progress-wrap" role="progressbar" [attr.aria-valuenow]="progressPercent" aria-valuemin="0" aria-valuemax="100" aria-label="Survey completion">
+      <div class="progress-bar" [style.width.%]="progressPercent"></div>
+    </div>
+    <p class="progress-label">{{ progressPercent }}% complete</p>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <!-- Section: User Type -->
+      <section class="section-card" id="field-userType" [class.section-card-invalid]="isSectionInvalid('userType') || (form.get('userType')?.value === 'Email' && controlInvalid('userEmail'))" aria-labelledby="user-type-heading">
+        <h2 id="user-type-heading" class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          User Type
+        </h2>
+        <div class="radio-grid radio-grid--inline">
+          <label class="radio-option">
+            <input type="radio" formControlName="userType" value="ANONYMOUS" class="radio-input" />
+            <span class="radio-label">Anonymous</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" formControlName="userType" value="Email" class="radio-input" />
+            <span class="radio-label">Email</span>
+          </label>
+        </div>
+        <p class="error-msg" *ngIf="showError('userType')">Please answer this question.</p>
+        <div *ngIf="form.get('userType')?.value === 'Email'" class="email-field" id="field-userEmail">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Enter your email</mat-label>
+            <input matInput formControlName="userEmail" type="email" />
+            <mat-error *ngIf="hasEmailError('required')">Email is required.</mat-error>
+            <mat-error *ngIf="hasEmailError('email')">Please enter a valid email.</mat-error>
+          </mat-form-field>
+        </div>
+      </section>
+
+      <!-- Section: Age Group -->
+      <section *ngIf="ageGroupQuestion" class="section-card" [id]="'field-demographics-' + ageGroupQuestion.questionId" [class.section-card-invalid]="controlInvalid(['demographics', ageGroupQuestion.questionId])" aria-labelledby="age-group-heading" formGroupName="demographics">
+        <h2 id="age-group-heading" class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </span>
+          Age Group
+        </h2>
+        <div class="radio-grid" *ngIf="ageGroupQuestion.type === 'radio'">
+          <label class="radio-option" *ngFor="let answer of orderedRadioAnswers(ageGroupQuestion.answers)">
+            <input type="radio" [formControlName]="ageGroupQuestion.questionId" [value]="answer" class="radio-input" />
+            <span class="radio-label">{{ answer.text }}</span>
+          </label>
+        </div>
+        <p class="error-msg" *ngIf="showError(['demographics', ageGroupQuestion.questionId])">Please answer this question.</p>
+      </section>
+
+      <!-- Section: Gender -->
+      <section *ngIf="genderQuestion" class="section-card" [id]="'field-demographics-' + genderQuestion.questionId" [class.section-card-invalid]="controlInvalid(['demographics', genderQuestion.questionId])" aria-labelledby="gender-heading" formGroupName="demographics">
+        <h2 id="gender-heading" class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          Gender
+        </h2>
+        <div class="radio-grid" *ngIf="genderQuestion.type === 'radio'">
+          <label class="radio-option" *ngFor="let answer of orderedRadioAnswers(genderQuestion.answers)">
+            <input type="radio" [formControlName]="genderQuestion.questionId" [value]="answer" class="radio-input" />
+            <span class="radio-label">{{ answer.text }}</span>
+          </label>
+        </div>
+        <p class="error-msg" *ngIf="showError(['demographics', genderQuestion.questionId])">Please answer this question.</p>
+      </section>
+
+      <!-- District: autocomplete over all SL districts -->
+      <section
+        *ngIf="districtQuestion"
+        class="section-card district-section"
+        id="field-demographics-district"
+        [class.section-card-invalid]="controlInvalid(['demographics', districtQuestion.questionId])"
+        formGroupName="demographics"
+      >
+        <h2 class="section-heading">
+          <span class="section-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          {{ districtQuestion.text }}
+        </h2>
+
+        <div class="district-field-wrap">
+          <mat-form-field appearance="outline" class="full-width district-autocomplete-field">
+            <mat-label>District</mat-label>
+            <input
+              matInput
+              type="text"
+              [formControlName]="districtQuestion.questionId"
+              [matAutocomplete]="districtAuto"
+              placeholder="Type your district"
+              autocomplete="address-level2"
+            />
+            <mat-autocomplete #districtAuto="matAutocomplete" autoActiveFirstOption>
+              <mat-option *ngFor="let name of districtFilter$ | async" [value]="name">
+                {{ name }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="form.get(['demographics', districtQuestion.questionId])?.hasError('required')">
+              District is required.
+            </mat-error>
+            <mat-error *ngIf="form.get(['demographics', districtQuestion.questionId])?.hasError('districtInvalid')">
+              Choose a district from the suggestions.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <p class="error-msg" *ngIf="showError(['demographics', districtQuestion.questionId])">Please enter a valid district.</p>
+      </section>
+
+      <!-- Other demographics -->
+      <section *ngIf="otherDemographics.length" class="section-card" formGroupName="demographics">
+        <div *ngFor="let question of otherDemographics" class="question-block" [id]="'field-demographics-' + question.questionId" [class.section-card-invalid]="controlInvalid(['demographics', question.questionId])">
+          <div *ngIf="question.type === 'radio'">
+            <p class="question-text">{{ question.text }}</p>
+            <div class="radio-grid">
+              <label class="radio-option" *ngFor="let answer of orderedRadioAnswers(question.answers)">
+                <input type="radio" [formControlName]="question.questionId" [value]="answer" class="radio-input" />
+                <span class="radio-label">{{ answer.text }}</span>
+              </label>
+            </div>
+            <p class="error-msg" *ngIf="showError(['demographics', question.questionId])">Please answer this question.</p>
           </div>
-  
-          <div *ngIf="form.get('userType')?.value === 'Email'">
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Enter your email</mat-label>
-              <input matInput formControlName="userEmail" />
+          <div *ngIf="question.type === 'text'">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ question.text }}</mat-label>
+              <input matInput [formControlName]="question.questionId" />
+              <mat-error>Please answer this question.</mat-error>
             </mat-form-field>
           </div>
+          <div *ngIf="question.type === 'dropdown'">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ question.text }}</mat-label>
+              <mat-select [formControlName]="question.questionId">
+                <mat-option *ngFor="let answer of question.answers" [value]="answer.answerId">{{ answer.text }}</mat-option>
+              </mat-select>
+              <mat-error>Please answer this question.</mat-error>
+            </mat-form-field>
+          </div>
+          <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
+            <p class="question-text">{{ question.text }}</p>
+            <div class="radio-grid">
+              <label class="checkbox-option" *ngFor="let answer of question.answers; let i = index">
+                <input type="checkbox" [formControl]="getCheckboxControl(question.questionId, i, 'demographics')" class="radio-input" />
+                <span class="radio-label">{{ answer.text }}</span>
+              </label>
+            </div>
+            <p class="error-msg" *ngIf="showError(['demographics', question.questionId])">Please answer this question.</p>
+          </div>
+        </div>
+      </section>
 
-          <!-- Demographic questions -->
-          <div formGroupName="demographics" *ngFor="let question of formData?.demographics" class="question">
-            <div *ngIf="question.type === 'text'">
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>{{ question.text }}</mat-label>
-                <input matInput [formControlName]="question.questionId" />
-              </mat-form-field>
+      <!-- Survey questions -->
+      <section *ngIf="formData?.questions?.length" class="section-card" formGroupName="questions">
+        <h2 class="section-heading">Your opinions</h2>
+        <div *ngFor="let question of formData.questions" class="question-block" [id]="'field-questions-' + question.questionId" [class.section-card-invalid]="controlInvalid(['questions', question.questionId])">
+          <div *ngIf="question.type === 'radio'">
+            <p class="question-text">{{ question.text }}</p>
+            <div class="radio-grid">
+              <label class="radio-option" *ngFor="let answer of orderedRadioAnswers(question.answers)">
+                <input type="radio" [formControlName]="question.questionId" [value]="answer" class="radio-input" />
+                <span class="radio-label">{{ answer.text }}</span>
+              </label>
             </div>
-  
-            <div *ngIf="question.type === 'radio'" class="radio-group">
-              <p class="question-text">{{ question.text }}</p>
-              <mat-radio-group
-                [formControlName]="question.questionId"
-                class="vertical-radio-group">
-                <mat-radio-button
-                  *ngFor="let answer of question.answers"
-                  [value]="answer">
-                  {{ answer.text }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-  
-            <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
-              <p class="question-text">{{ question.text }}</p>
-              <div *ngFor="let answer of question.answers; let i = index">
-                <mat-checkbox [formControl]="getCheckboxControl(question.questionId, i)">
-                  {{ answer.text }}
-                </mat-checkbox>                
-              </div>
-            </div>
-  
-            <div *ngIf="question.type === 'dropdown'">
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>{{ question.text }}</mat-label>
-                <mat-select [formControlName]="question.questionId">
-                  <mat-option
-                    *ngFor="let answer of question.answers"
-                    [value]="answer.answerId">
-                    {{ answer.text }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <p class="error-msg" *ngIf="showError(['questions', question.questionId])">Please answer this question.</p>
           </div>
-  
-          <!-- Survey questions -->
-          <div formGroupName="questions" *ngFor="let question of formData?.questions" class="question">
-            <div *ngIf="question.type === 'text'">
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>{{ question.text }}</mat-label>
-                <input matInput [formControlName]="question.questionId" />
-              </mat-form-field>
-            </div>
-  
-            <div *ngIf="question.type === 'radio'" class="radio-group">
-              <p class="question-text">{{ question.text }}</p>
-              <mat-radio-group
-                [formControlName]="question.questionId"
-                class="vertical-radio-group">
-                <mat-radio-button
-                  *ngFor="let answer of question.answers"
-                  [value]="answer">
-                  {{ answer.text }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-  
-            <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
-              <p class="question-text">{{ question.text }}</p>
-              <div *ngFor="let answer of question.answers; let i = index">
-                <mat-checkbox [formControl]="getCheckboxControl(question.questionId, i)">
-                  {{ answer.text }}
-                </mat-checkbox>                
-              </div>
-            </div>
-  
-            <div *ngIf="question.type === 'dropdown'">
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>{{ question.text }}</mat-label>
-                <mat-select [formControlName]="question.questionId">
-                  <mat-option
-                    *ngFor="let answer of question.answers"
-                    [value]="answer.answerId">
-                    {{ answer.text }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+          <div *ngIf="question.type === 'text'">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ question.text }}</mat-label>
+              <input matInput [formControlName]="question.questionId" />
+              <mat-error>Please answer this question.</mat-error>
+            </mat-form-field>
           </div>
-        
-          <div class="form-actions">
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="form.invalid">
-              Submit
-            </button>
+          <div *ngIf="question.type === 'dropdown'">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ question.text }}</mat-label>
+              <mat-select [formControlName]="question.questionId">
+                <mat-option *ngFor="let answer of question.answers" [value]="answer.answerId">{{ answer.text }}</mat-option>
+              </mat-select>
+              <mat-error>Please answer this question.</mat-error>
+            </mat-form-field>
           </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
+          <div *ngIf="question.type === 'checkbox'" class="checkbox-group">
+            <p class="question-text">{{ question.text }}</p>
+            <div class="radio-grid">
+              <label class="checkbox-option" *ngFor="let answer of question.answers; let i = index">
+                <input type="checkbox" [formControl]="getCheckboxControl(question.questionId, i, 'questions')" class="radio-input" />
+                <span class="radio-label">{{ answer.text }}</span>
+              </label>
+            </div>
+            <p class="error-msg" *ngIf="showError(['questions', question.questionId])">Please answer this question.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

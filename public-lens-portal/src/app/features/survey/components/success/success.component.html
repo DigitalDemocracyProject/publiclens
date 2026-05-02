@@ -1,7 +1,12 @@
-<div class="success-container">
-    <h1>Survey Successfully Submitted!</h1>
-    <p>Thank you for completing the survey.</p>
-    <button mat-raised-button color="primary" (click)="goHome()">
-        Go to Home
-    </button>
+<div class="success-page">
+  <div class="success-card">
+    <div class="success-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h1 class="success-title">Survey submitted</h1>
+    <p class="success-text">Thank you for completing the survey. Your responses help build a clearer picture of public opinion.</p>
+    <div class="success-actions">
+      <button type="button" class="btn-outline" (click)="goHome()">Back to home</button>
+    </div>
+  </div>
 </div>

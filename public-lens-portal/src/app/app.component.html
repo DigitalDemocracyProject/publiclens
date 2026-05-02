@@ -1,27 +1,82 @@
-<header class="header-container">
-  <h1>Align With Me</h1>
+<header class="site-header">
+  <div
+    class="header-inner"
+    [class.nav-menu-open]="navOpen"
+  >
+    <div class="header-left">
+      <a routerLink="/home" class="logo-link">
+        <span class="logo-mark" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2l8.5 9.5L12 22l-8.5-10.5L12 2z" />
+          </svg>
+        </span>
+        <span class="logo-text">AlignwithMe</span>
+      </a>
 
-  <!-- Show username when logged in -->
-  <span *ngIf="auth.isLoggedIn()" class="user-text">
-    {{ auth.getEmail() }}
-  </span>
+      <button
+        type="button"
+        class="nav-toggle"
+        (click)="navOpen = !navOpen"
+        [attr.aria-expanded]="navOpen"
+        aria-controls="primary-nav"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
 
-  <!-- Sign In button -->
-  <button class="login-btn" *ngIf="!auth.isLoggedIn()" (click)="auth.login()">
-    Sign In
-  </button>
+    <nav
+      id="primary-nav"
+      class="site-nav"
+      aria-label="Primary"
+      (click)="closeNavOnNavigate()"
+    >
+      <a
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a routerLink="/surveys" routerLinkActive="active">Surveys</a>
+      <a routerLink="/result" routerLinkActive="active">Results</a>
+    </nav>
 
-  <!-- Sign Out button -->
-  <button class="logout-btn" *ngIf="auth.isLoggedIn()" (click)="auth.logout()">
-    Sign Out
-  </button>
+    <div class="header-right">
+      <button
+        type="button"
+        class="sign-in-btn"
+        *ngIf="!auth.isLoggedIn()"
+        (click)="auth.login()"
+      >
+        Sign In
+      </button>
+
+      <div class="user-section" *ngIf="auth.isLoggedIn()">
+        <span class="user-email">{{ auth.getEmail() }}</span>
+        <button
+          type="button"
+          class="sign-out-btn"
+          (click)="auth.logout()"
+        >
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </div>
 </header>
 
-<nav mat-tab-nav-bar class="nav-bar">
-  <a mat-tab-link routerLink="/home" routerLinkActive="mat-tab-label-active">Home</a>
-  <a mat-tab-link routerLink="/surveys" routerLinkActive="mat-tab-label-active">Surveys</a>
-  <a mat-tab-link routerLink="/summary" routerLinkActive="mat-tab-label-active">Summary</a>
-  <a mat-tab-link routerLink="/result" routerLinkActive="mat-tab-label-active">Result</a>
-  <a mat-tab-link routerLink="/analysis" routerLinkActive="mat-tab-label-active">Analysis</a>
-</nav>
-<router-outlet></router-outlet>
+<main class="site-main">
+  <router-outlet></router-outlet>
+</main>
