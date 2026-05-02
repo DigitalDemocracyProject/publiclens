@@ -12,10 +12,16 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  navOpen = false;
+
   constructor(
     public auth: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  closeNavOnNavigate(): void {
+    this.navOpen = false;
+  }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
