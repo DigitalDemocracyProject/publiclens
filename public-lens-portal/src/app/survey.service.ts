@@ -15,4 +15,9 @@ export class SurveyService {
   getAnalysisResults(): Observable<CrosstabResult[]> {
     return this.http.get<CrosstabResult[]>(this.apiUrl);
   }
+  /*
+  getAnalysisResults(surveyId: string): Observable<CrosstabResult[]> {
+    return this.http.get<CrosstabResult[]>(`${this.apiUrl}/${surveyId}`);
+  }
+   */
 }

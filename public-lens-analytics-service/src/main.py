@@ -1,3 +1,15 @@
+import os
+import sys
+
+# Adds the project root directory to sys.path
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+
+# Add both to sys.path so both 'api' and 'src.api' resolves correctly
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 from fastapi import FastAPI
 from api.routes import router as survey_analysis_router
 

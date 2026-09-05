@@ -15,9 +15,9 @@ export class FormDataService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    
+
     return this.http.post<any>(
-      `${this.API_URL}/user-response`, 
+      `${this.API_URL}/user-response`,
       responsePayload,
       { headers }
     );
@@ -26,4 +26,10 @@ export class FormDataService {
   getFormData(): Observable<any> {
     return this.http.get<any>(`${this.API_URL}/survey/68e14b2cc5cf813189b25c86`);
   }
+
+  /* i think we shud change like this to alllow multiple suveys to exist
+  getFormData(surveyID: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/survey/${surveyID}`);
+  }
+  */
 }
