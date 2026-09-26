@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'result', component: ResultComponent },
   { path: 'summary', component: SummaryComponent },
 ];
-//add /:id at the end for survey, result, summary??
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

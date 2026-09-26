@@ -26,10 +26,4 @@ export class FormDataService {
   getFormData(): Observable<any> {
     return this.http.get<any>(`${this.API_URL}/survey/68e14b2cc5cf813189b25c86`);
   }
-
-  /* i think we shud change like this to alllow multiple suveys to exist
-  getFormData(surveyID: string): Observable<any> {
-    return this.http.get<any>(`${this.API_URL}/survey/${surveyID}`);
-  }
-  */
 }
