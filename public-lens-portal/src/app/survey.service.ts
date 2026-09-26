@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CrosstabResult } from './survey-analysis.model'; // Import the interface
+import { CrosstabResult } from './survey-analysis.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,4 @@ export class SurveyService {
   getAnalysisResults(): Observable<CrosstabResult[]> {
     return this.http.get<CrosstabResult[]>(this.apiUrl);
   }
-  /*
-  getAnalysisResults(surveyId: string): Observable<CrosstabResult[]> {
-    return this.http.get<CrosstabResult[]>(`${this.apiUrl}/${surveyId}`);
-  }
-   */
 }
