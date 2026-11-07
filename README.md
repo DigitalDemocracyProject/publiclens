@@ -40,6 +40,7 @@ A survey system which can be used to conduct public opinion polls. This is a dyn
    - source venv/bin/activate (Mac/ Linux) or venv\Scripts\activate (Windows)
    - pip install -r requirements.txt
    - uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+   - Set `CORS_ORIGINS` to a comma-separated list of portal origins when the portal is not running on `http://localhost:4200` or `http://127.0.0.1:4200`.
 
 ### public-lens-portal - Angular
 1. Install NodeJS: preffered version v23.7.0

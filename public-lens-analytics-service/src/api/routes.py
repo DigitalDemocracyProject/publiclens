@@ -1,6 +1,5 @@
-from http.client import HTTPException
 import math
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from fastapi.encoders import jsonable_encoder
 from services.survey_analysis_service import analyze_survey_data
 

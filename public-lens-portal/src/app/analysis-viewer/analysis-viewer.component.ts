@@ -1,38 +1,66 @@
-// analysis-viewer.component.ts
-
-import { Component, OnInit, Signal } from '@angular/core'; // Import Signal
-import { toSignal } from '@angular/core/rxjs-interop'; // Import toSignal
-import { SurveyService } from './../survey.service';
-import { CrosstabResult } from './../survey-analysis.model';
-import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { catchError, distinctUntilChanged, filter, map, of, startWith, Subject, switchMap } from 'rxjs';
+import { SurveyService } from '../survey.service';
+import { CrosstabResult } from '../survey-analysis.model';
 
 @Component({
   selector: 'app-analysis-viewer',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './analysis-viewer.component.html',
-  styleUrls: ['./analysis-viewer.component.css'],
-  // Make sure your component is standalone: true to use the new syntax
-  // or that the necessary imports are in your NgModule.
-  // For standalone:
-  // standalone: true,
-  // imports: [CommonModule] // CommonModule is no longer needed for control flow!
+  styleUrl: './analysis-viewer.component.css'
 })
 export class AnalysisViewerComponent implements OnInit {
+  results: CrosstabResult[] = [];
+  isLoading = true;
+  errorMessage = '';
 
-  // Convert the observable to a signal.
-  // We give it an initialValue of [] so the type is CrosstabResult[]
-  // and we don't have to check for 'undefined'.
-  public results: Signal<CrosstabResult[]>;
+  private readonly refresh$ = new Subject<void>();
+  private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private surveyService: SurveyService, private route: ActivatedRoute) {
-    // It's often better to initialize signals in the constructor
-    this.results = toSignal(
-      this.surveyService.getAnalysisResults(this.route.snapshot.paramMap.get('surveyId')!),
-      { initialValue: [] }
-    );
-  }
+  constructor(
+    private surveyService: SurveyService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    // The logic is now in the constructor, so ngOnInit might be empty
-    // or used for other purposes.
+    this.route.paramMap.pipe(
+      map((params) => params.get('surveyId')),
+      filter((surveyId): surveyId is string => surveyId !== null),
+      distinctUntilChanged(),
+      switchMap((surveyId) => this.refresh$.pipe(
+        startWith(undefined),
+        switchMap(() => {
+          this.isLoading = true;
+          this.errorMessage = '';
+          this.results = [];
+
+          return this.surveyService.getAnalysisResults(surveyId).pipe(
+            map((results) => ({ results })),
+            catchError((error: unknown) => {
+              console.error('Error loading survey analysis:', error);
+              return of({ error: true as const });
+            })
+          );
+        })
+      )),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((response) => {
+      this.isLoading = false;
+
+      if ('error' in response) {
+        this.errorMessage = 'Unable to load this survey’s analysis. Please try again.';
+        return;
+      }
+
+      this.results = response.results;
+    });
+  }
+
+  retry(): void {
+    this.refresh$.next();
   }
 }

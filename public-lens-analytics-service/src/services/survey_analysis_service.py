@@ -63,7 +63,7 @@ def analyze_survey_data(survey_id: str):
 
     # If the DataFrame is empty, exit
     if df.empty:
-        return "Data was empty or could not be processed."
+        return []
 
     # 3. Identify demographic and question columns dynamically
     demographic_cols = [col for col in df.columns if col.startswith('d')]

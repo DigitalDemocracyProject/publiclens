@@ -13,5 +13,5 @@ export interface TableResult {
 export interface TableData {
   index: string[];   // Row headers
   columns: string[]; // Column headers
-  data: number[][];  // The 2D array of data
+  data: (string | number | null)[][];  // The 2D array of data
 }

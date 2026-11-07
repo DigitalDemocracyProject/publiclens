@@ -1,41 +1,45 @@
-@if (results().length > 0) {
+<section class="analysis-page" aria-labelledby="analysis-title">
+  <header class="analysis-header">
+    <p class="eyebrow">Survey results</p>
+    <h1 id="analysis-title">Response analysis</h1>
+    <p>Explore responses across survey questions and demographics.</p>
+    <a class="back-link" routerLink="/results">← Choose another survey</a>
+  </header>
 
-  <div class="analysis-container">
+  <p *ngIf="isLoading" class="status-message" role="status">Loading analysis…</p>
 
-    @for (result of results(); track result['title']) {
-      <div class="crosstab-card">
-        <h3>{{ result.title }}</h3>
-        @for (table of result.tables; track table.subtitle) {
-          <h4>{{ table.subtitle }}</h4>
+  <div *ngIf="!isLoading && errorMessage" class="error-state" role="alert">
+    <p>{{ errorMessage }}</p>
+    <button type="button" class="retry-button" (click)="retry()">Try again</button>
+  </div>
+
+  <p *ngIf="!isLoading && !errorMessage && results.length === 0" class="status-message">
+    There are no responses to analyze for this survey yet.
+  </p>
+
+  <div *ngIf="results.length > 0" class="analysis-list">
+    <article *ngFor="let result of results" class="analysis-card">
+      <h2>{{ result.title }}</h2>
+
+      <section *ngFor="let tableResult of result.tables" class="table-section">
+        <h3>{{ tableResult.subtitle }}</h3>
+        <div class="table-scroll">
           <table>
             <thead>
               <tr>
-                <th></th> @for (colName of table.table.columns; track $index) {
-                  <th>{{ colName }}</th>
-                }
+                <th scope="col"></th>
+                <th *ngFor="let column of tableResult.table.columns" scope="col">{{ column }}</th>
               </tr>
             </thead>
-
             <tbody>
-              @for (rowName of table.table.index; track $index; let i = $index) {
-
-                <tr>
-                  <th>{{ rowName }}</th>
-
-                  @for (cellData of table.table.data[i]; track $index) {
-                    <td>{{ cellData }}</td>
-                  }
-                </tr>
-              }
+              <tr *ngFor="let row of tableResult.table.data; let rowIndex = index">
+                <th scope="row">{{ tableResult.table.index[rowIndex] }}</th>
+                <td *ngFor="let cell of row">{{ cell }}</td>
+              </tr>
             </tbody>
           </table>
-        }
-      </div>
-
-    } </div>
-
-} @else {
-
-  <p>Loading analysis data...</p>
-
-}
+        </div>
+      </section>
+    </article>
+  </div>
+</section>

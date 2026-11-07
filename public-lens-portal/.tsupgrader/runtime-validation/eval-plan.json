@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-11-07T21:20:00+05:30",
+  "generatedOnPlatform": "linux",
+  "projectType": "webapp",
+  "setup": [
+    {
+      "command": "npm",
+      "args": ["ci"],
+      "timeoutSeconds": 600
+    }
+  ],
+  "assertions": [
+    {
+      "name": "production-build",
+      "kind": "process",
+      "command": "npm",
+      "args": ["run", "build"],
+      "verificationMethod": "exit-code",
+      "expected": "0",
+      "timeoutSeconds": 300
+    },
+    {
+      "name": "tests-pass",
+      "kind": "process",
+      "command": "npm",
+      "args": ["test", "--", "--watch=false"],
+      "verificationMethod": "test-results",
+      "expected": "0",
+      "timeoutSeconds": 300
+    },
+    {
+      "name": "results-picker-route",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": ["run", "start", "--", "--host", "localhost", "--port", "4210"],
+      "url": "http://localhost:4210/results",
+      "verificationMethod": "http-status",
+      "expected": "200",
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "survey-analysis-route",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": ["run", "start", "--", "--host", "localhost", "--port", "4210"],
+      "url": "http://localhost:4210/results/68e14b2cc5cf813189b25c86",
+      "verificationMethod": "output-contains",
+      "expected": "CROSSTABS FOR QUESTION:",
+      "timeoutSeconds": 120
+    }
+  ]
+}
