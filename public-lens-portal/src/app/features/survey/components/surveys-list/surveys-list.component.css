@@ -1,0 +1,103 @@
+.surveys-page {
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto;
+  padding: 3.5rem 0 5rem;
+}
+
+.surveys-header {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.surveys-header h1 {
+  margin: 0.35rem 0 0.75rem;
+  color: #173b36;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.surveys-header p {
+  margin: 0;
+  color: #566a66;
+}
+
+.surveys-header .eyebrow {
+  color: #2b7668;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.survey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem;
+}
+
+.survey-card {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid #dce8e4;
+  border-radius: 16px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.survey-card:hover,
+.survey-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: #6da99b;
+  box-shadow: 0 10px 24px rgb(23 59 54 / 10%);
+}
+
+.survey-card:focus-visible,
+.retry-button:focus-visible {
+  outline: 3px solid #2b7668;
+  outline-offset: 3px;
+}
+
+.survey-card h2 {
+  margin: 0 0 0.65rem;
+  color: #173b36;
+  font-size: 1.25rem;
+}
+
+.survey-card p {
+  margin: 0 0 1.5rem;
+  color: #566a66;
+  line-height: 1.55;
+}
+
+.survey-link {
+  margin-top: auto;
+  color: #226b5c;
+  font-weight: 700;
+}
+
+.status-message,
+.error-state {
+  padding: 2rem 1rem;
+  color: #566a66;
+  text-align: center;
+}
+
+.error-state p {
+  margin: 0 0 1rem;
+}
+
+.retry-button {
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: #226b5c;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}

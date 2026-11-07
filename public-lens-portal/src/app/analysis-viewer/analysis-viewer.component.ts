@@ -4,6 +4,7 @@ import { Component, OnInit, Signal } from '@angular/core'; // Import Signal
 import { toSignal } from '@angular/core/rxjs-interop'; // Import toSignal
 import { SurveyService } from './../survey.service';
 import { CrosstabResult } from './../survey-analysis.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-analysis-viewer',
@@ -22,10 +23,10 @@ export class AnalysisViewerComponent implements OnInit {
   // and we don't have to check for 'undefined'.
   public results: Signal<CrosstabResult[]>;
 
-  constructor(private surveyService: SurveyService) {
+  constructor(private surveyService: SurveyService, private route: ActivatedRoute) {
     // It's often better to initialize signals in the constructor
     this.results = toSignal(
-      this.surveyService.getAnalysisResults(),
+      this.surveyService.getAnalysisResults(this.route.snapshot.paramMap.get('surveyId')!),
       { initialValue: [] }
     );
   }

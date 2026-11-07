@@ -1,0 +1,32 @@
+<section class="surveys-page" aria-labelledby="surveys-title">
+  <header class="surveys-header">
+    <p class="eyebrow">Have your say</p>
+    <h1 id="surveys-title">Surveys</h1>
+    <p>Choose a survey to share your perspective.</p>
+  </header>
+
+  <p *ngIf="isLoading && surveys.length === 0" class="status-message" role="status">
+    Loading surveys…
+  </p>
+
+  <div *ngIf="!isLoading && errorMessage" class="error-state" role="alert">
+    <p>{{ errorMessage }}</p>
+    <button type="button" class="retry-button" (click)="loadSurveys()">Try again</button>
+  </div>
+
+  <p *ngIf="!isLoading && !errorMessage && surveys.length === 0" class="status-message">
+    There are no surveys available right now.
+  </p>
+
+  <div *ngIf="surveys.length > 0" class="survey-grid">
+    <a
+      *ngFor="let survey of surveys"
+      class="survey-card"
+      [routerLink]="['/surveys', survey.id]"
+    >
+      <h2>{{ survey.surveyName }}</h2>
+      <p>{{ survey.description }}</p>
+      <span class="survey-link">Take survey <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</section>

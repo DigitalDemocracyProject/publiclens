@@ -4,6 +4,6 @@ export interface SurveyInfo {
   id: string;
   surveyName: string;
   description: string;
-  userInfoId: string;
+  demographics: QuestionInfo[];
   questions: QuestionInfo[];
 }

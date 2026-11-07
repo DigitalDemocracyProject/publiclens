@@ -10,7 +10,9 @@ import org.alignwithme.survey_service.model.SurveyInfo;
 import org.alignwithme.survey_service.util.SurveyUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SurveyService {
@@ -45,5 +47,14 @@ public class SurveyService {
         }
 
         return surveyUtil.surveyToSurveyInfo(survey.get(), demographic.get());
+    }
+
+    public List<SurveyInfo> getAllSurveys() {
+        return surveyRepository.findAll().stream()
+                .map(survey -> {
+                    Optional<Demographic> demographic = demographicRepository.findById(survey.getDemographicId());
+                    return surveyUtil.surveyToSurveyInfo(survey, demographic.orElse(null));
+                })
+                .collect(Collectors.toList());
     }
 }

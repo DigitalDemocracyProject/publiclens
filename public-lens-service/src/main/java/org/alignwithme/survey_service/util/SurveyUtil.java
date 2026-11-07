@@ -6,6 +6,7 @@ import org.alignwithme.survey_service.entity.Survey;
 import org.alignwithme.survey_service.model.SurveyInfo;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,18 +16,20 @@ public class SurveyUtil {
     private final QuestionUtil questionUtil;
 
     public SurveyInfo surveyToSurveyInfo(Survey survey, Demographic demographic) {
-        if (survey == null || demographic == null) return null;
+        if (survey == null) return null;
 
         SurveyInfo surveyInfo = new SurveyInfo();
         surveyInfo.setId(survey.getId());
         surveyInfo.setSurveyName(survey.getSurveyName());
         surveyInfo.setDescription(survey.getDescription());
 
-        if (demographic.getQuestions() != null) {
+        if (demographic != null && demographic.getQuestions() != null) {
             surveyInfo.setDemographics(
                     demographic.getQuestions().stream()
                             .map(questionUtil::questionToQuestionInfo).collect(Collectors.toList())
             );
+        } else {
+            surveyInfo.setDemographics(Collections.emptyList());
         }
 
         if (survey.getQuestions() != null) {

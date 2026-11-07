@@ -20,7 +20,6 @@ def _sanitize(obj):
     return obj
 '''
 Until the frontend is able to pass the survey_id, we will use a hardcoded value.
-'''
 @router.get("/analyze")
 def analyze_survey():
 
@@ -36,7 +35,9 @@ def analyze_survey():
 
     return safe
 '''
+'''
 Once the frontend is able to pass the survey_id, we will use this endpoint instead of the one above.
+'''
 @router.get("/analyze/{survey_id}")
 def analyze_survey(survey_id: str):
 
@@ -53,4 +54,3 @@ def analyze_survey(survey_id: str):
         return safe
     except Exception as e:
         raise HTTPException(status_code=404, detail="Survey not found")
-'''

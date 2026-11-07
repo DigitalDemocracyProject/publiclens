@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { SurveyInfo } from '../../../shared/models/survey-info.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,11 @@ export class FormDataService {
     );
   }
 
-  getFormData(): Observable<any> {
-    return this.http.get<any>(`${this.API_URL}/survey/68e14b2cc5cf813189b25c86`);
+  getSurveys(): Observable<SurveyInfo[]> {
+    return this.http.get<SurveyInfo[]>(`${this.API_URL}/survey`);
+  }
+
+  getFormData(surveyId: string): Observable<any> {
+    return this.http.get<any>(this.API_URL+"/survey/"+encodeURIComponent(surveyId));
   }
 }

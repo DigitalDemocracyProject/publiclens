@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map, startWith, of } from 'rxjs';
 
 import { FormDataService } from '../../services/form-data.service';
@@ -72,7 +72,8 @@ export class SurveyFormComponent {
     private fb: FormBuilder,
     private formDataService: FormDataService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       demographics: this.fb.group({}),
@@ -81,7 +82,7 @@ export class SurveyFormComponent {
   }
 
   ngOnInit(): void {
-    this.formDataService.getFormData().subscribe((data: any) => {
+    this.formDataService.getFormData(this.route.snapshot.paramMap.get('surveyId')!).subscribe((data: any) => {
       this.formData = data;
       this.buildForm(data);
     });

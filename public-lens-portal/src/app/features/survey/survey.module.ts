@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SurveyFormComponent } from './components/survey-form/survey-form.component';
 import { SuccessComponent } from './components/success/success.component';
-
+import { SurveysListComponent } from './components/surveys-list/surveys-list.component';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +20,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    SurveysListComponent,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

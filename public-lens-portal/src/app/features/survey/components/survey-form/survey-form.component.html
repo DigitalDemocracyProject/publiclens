@@ -1,6 +1,6 @@
 <div class="survey-page" *ngIf="formData">
   <div class="survey-card">
-    <h1 class="survey-title">{{ formData?.title }}</h1>
+    <h1 class="survey-title">{{ formData?.surveyName || formData?.title }}</h1>
 
     <!-- Progress indicator -->
     <div class="progress-wrap" role="progressbar" [attr.aria-valuenow]="progressPercent" aria-valuemin="0" aria-valuemax="100" aria-label="Survey completion">
