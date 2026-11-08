@@ -7,6 +7,7 @@ import { SuccessComponent } from './features/survey/components/success/success.c
 import { ResultsListComponent } from './features/result/components/results-list/results-list.component';
 import { AnalysisViewerComponent } from './analysis-viewer/analysis-viewer.component';
 import { SummaryComponent } from './features/result/components/summary/summary.component';
+import { ResultComponent } from './features/result/components/result/result.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'results', component: ResultsListComponent },
   { path: 'results/:surveyId', component: AnalysisViewerComponent },
   { path: 'result', redirectTo: '/results', pathMatch: 'full' },
+  { path: 'example', component: ResultComponent },
   { path: 'summary', component: SummaryComponent },
 ];
 

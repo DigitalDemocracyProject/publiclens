@@ -11,7 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FeaturesModule } from './features/features.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -25,7 +25,7 @@ import { provideHttpClient } from '@angular/common/http';
   providers: [
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(withFetch())
   ],
   bootstrap: []
 })

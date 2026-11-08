@@ -52,7 +52,7 @@ export class AnalysisViewerComponent implements OnInit {
       this.isLoading = false;
 
       if ('error' in response) {
-        this.errorMessage = 'Unable to load this survey’s analysis. Please try again.';
+        this.errorMessage = 'Unable to load this survey\'s analysis. Please try again.';
         return;
       }
 

@@ -4,7 +4,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app-routing.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   provideClientHydration,
   withEventReplay,
@@ -14,7 +14,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay())
   ],
 }).catch((err) => console.error(err));
